@@ -14,9 +14,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "enzyme": "^3.4.4",
     "ajv": "^6.5.3",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "jest": "^23.5.0"
   }
 }
