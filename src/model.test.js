@@ -1,4 +1,4 @@
-import { findMethod, workOutType } from './model';
+import { findMethod, workOutType, workOutArray } from './model';
 
 test('it returns .join when required for desiredOutput', () => {
   expect(findMethod([1, 2, 3], '1,2,3')).toContain('.join');
@@ -34,4 +34,8 @@ test('workOutType turns a single quoted string into a string', () => {
 
 test('workOutType turns an integer string into an integer', () => {
   expect(workOutType('2')).toBe(2);
-})
+});
+
+test('workOutArray fully parses an array string of integers', () => {
+  expect(JSON.stringify(workOutArray('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
+});
