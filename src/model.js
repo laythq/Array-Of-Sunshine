@@ -8,6 +8,7 @@ module.exports = {
       if (arrayList[i].call(inputArray) === desiredOutput){
         return '.' + arrayList[i].name;
       }
+      return 'No method found';
     }
-  }
-}
+  },
+};
