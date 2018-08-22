@@ -1,5 +1,6 @@
 const methodList = [
   Array.prototype.join,
+  Array.prototype.pop,
 ];
 
 module.exports = {
