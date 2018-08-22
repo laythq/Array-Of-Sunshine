@@ -15,3 +15,7 @@ test('it returns .pop when appropriate', () => {
 test('it returns .reverse when appropriate', () => {
   expect(findMethod([1,2,3], [3,2,1])).toBe('.reverse')
 })
+
+test('it returns .shift when appropriate', () => {
+  expect(findMethod([1,2,3], 1)).toBe('.shift')
+})

@@ -2,6 +2,7 @@ const methodList = [
   Array.prototype.join,
   Array.prototype.pop,
   Array.prototype.reverse,
+  Array.prototype.shift,
 ];
 
 module.exports = {
