@@ -24,5 +24,6 @@ module.exports = {
 
   workOutType(string) {
     if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
+    if (string.match(/^\d+$/)) return parseInt(string); 
   },
 };

@@ -31,3 +31,7 @@ test('it returns .toString when appropriate', () => {
 test('workOutType turns a single quoted string into a string', () => {
   expect(workOutType("'This is a string'")).toBe('This is a string');
 });
+
+test('workOutType turns an integer string into an integer', () => {
+  expect(workOutType('2')).toBe(2);
+})
