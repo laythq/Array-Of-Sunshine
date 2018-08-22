@@ -1,13 +1,14 @@
 const methodList = [
   Array.prototype.join,
   Array.prototype.pop,
+  Array.prototype.reverse,
 ];
 
 module.exports = {
   findMethod(inputArray, desiredOutput) {
     for (const i in methodList) {
-      const testArray = inputArray.slice();
-      if (methodList[i].call(testArray) === desiredOutput) {
+      const testArray = inputArray.slice()
+      if (JSON.stringify(methodList[i].call(testArray)) === JSON.stringify(desiredOutput)) {
         return `.${methodList[i].name}`;
       }
     }
