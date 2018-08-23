@@ -9,11 +9,13 @@ const methodList = [
 
 function workOutType(string) {
   if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
+  if (string.match(/^".*"$/)) return string.replace(/[(^")("$)]/g, '');
   if (string.match(/^\d+$/)) return parseInt(string);
+  return string
 }
 
 function workOutArray(inputString) {
-  let string = inputString
+  let string = workOutType(inputString)
   if (string.match(/^\[.*\]$/)){
     string = string.replace(/[(^\[)(\]$)]/g, '');
     return string.split(',').map(x => workOutType(x));

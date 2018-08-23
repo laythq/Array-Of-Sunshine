@@ -32,10 +32,18 @@ test('workOutType turns a single quoted string into a string', () => {
   expect(workOutType("'This is a string'")).toBe('This is a string');
 });
 
+test('workOutType turns a double quoted string into a string', () => {
+  expect(workOutType('"This is a string"')).toBe('This is a string');
+});
+
 test('workOutType turns an integer string into an integer', () => {
   expect(workOutType('2')).toBe(2);
 });
 
 test('workOutArray fully parses an array string of integers', () => {
   expect(JSON.stringify(workOutArray('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
+});
+
+test('workOutArray fully parses a double quoted array string of integers', () => {
+  expect(JSON.stringify(workOutArray('"[1,2,3]"'))).toBe(JSON.stringify([1, 2, 3]));
 });
