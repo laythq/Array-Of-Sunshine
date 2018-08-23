@@ -1,9 +1,10 @@
-it('renders without crashing', () => {
-  
-});
+import React from 'react';
+import App from './App';
+import { shallow } from 'enzyme';
 
-describe('Addition', () => {
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
-  });
-});
+
+describe('History component', () => {
+  it('renders a list of methods')
+
+
+})
