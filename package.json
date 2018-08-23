@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "istanbul": "^0.4.5",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
@@ -11,10 +12,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "istanbul cover ./node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
     "ajv": "^6.5.3",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
     "enzyme": "^3.4.4",
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.3.4",
@@ -24,6 +28,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "jest": "^23.5.0"
+    "jest": "^23.5.0",
+    "regenerator-runtime": "^0.12.1"
   }
 }
