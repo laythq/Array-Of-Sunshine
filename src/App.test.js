@@ -2,9 +2,6 @@ import React from 'react';
 import App from './App';
 import { shallow } from 'enzyme';
 
-
-describe('History component', () => {
-  it('renders a list of methods')
-
-
-})
+test('adds 1 + 2 to equal 3', () => {
+  expect(1 + 2).toBe(4);
+});
