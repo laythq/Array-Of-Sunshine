@@ -1,22 +1,133 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { change } from './placeholder_model_EF';
 
-class App extends Component {
+class History extends React.Component {
+  generateHistory() {
+    const items = this.props.history.map(item => item.slice());
+    return items.reverse().map((item, index) => <div key={index}>{item}</div>);
+  }
+
+  render() {
+    const list = this.generateHistory();
+    return (
+      <div>{list}</div>
+    );
+  }
+}
+
+class CodeSuggestion extends React.Component {
+  render() {
+    if (!this.props.input) {
+      return null;
+    }
+    const codeSuggestion = change(this.props.input, this.props.output);
+    this.props.logSuggestion(this.props.input, this.props.output, codeSuggestion);
+    return (
+      <div>
+        {this.props.input}
+        >
+        {this.props.output}
+        =
+        {codeSuggestion}
+      </div>
+    );
+  }
+}
+
+class InputForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: null,
+      output: null,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    const name = event.target.name;
+    this.setState({
+      [name]: event.target.value,
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.setInputOutput(this.state.input, this.state.output);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload. this is a line that is way too long
-        </p>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input name="input" type="text" onChange={this.handleChange} />
+          <input name="output" type="text" onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  }
+}
+
+class Summary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: null,
+      output: null,
+      history: [],
+    };
+
+    this.setInputOutput = this.setInputOutput.bind(this);
+    this.logSuggestion = this.logSuggestion.bind(this);
+  }
+
+  setInputOutput(input, output) {
+    this.setState({
+      input,
+      output,
+    });
+  }
+
+  logSuggestion(input, output, code) {
+    this.state.history.push(`${input} > ${output} = ${code}`);
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          User Input:
+          <InputForm
+            setInputOutput={this.setInputOutput}
+          />
+        </div>
+        <div>
+          Code Suggestion:
+          <CodeSuggestion
+            input={this.state.input}
+            output={this.state.output}
+            logSuggestion={this.logSuggestion}
+          />
+        </div>
+        <div>
+          History:
+          <History
+            history={this.state.history}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Summary />
       </div>
     );
   }
