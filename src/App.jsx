@@ -5,7 +5,7 @@ class History extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: props.suggestions
+      history: props.history
     }
   }
 
@@ -26,25 +26,40 @@ class History extends React.Component {
 
 }
 
-function CodeSuggestion(props) {
-  return (
-    <div>{props.input} > {props.output} = {props.code}</div>
-  )
+class CodeSuggestion extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      code: ''
+    };
+    this.generateSuggestion = this.generateSuggestion.bind(this);
+  }
+
+  render(){
+    this.generateSuggestion;
+    return(
+      <div>{this.props.input} > {this.props.output} = {this.state.code}</div>
+    )
+  }
+
+  generateSuggestion(props){
+    let code = change(props.input, props.output)
+    this.setState({
+      code: code
+    })
+  }
 }
 
 class InputForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: 'input',
-      output: 'output',
-      code: 'code',
-      suggestions: []
+      input: '',
+      output: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderCodeSuggestion = this.renderCodeSuggestion.bind(this);
   }
 
   handleChange(event) {
@@ -56,49 +71,53 @@ class InputForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let code = change(this.state.input, this.state.output)
-    this.setState({
-      code: code
-    })
-    this.storeSuggestion(code);
-  }
-
-  storeSuggestion(code) {
-    let suggestion = <div>{this.state.input} > {this.state.output} = {code}</div>
-    this.state.suggestions.push(suggestion)
-  }
-
-  renderCodeSuggestion() {
-    return (
-      <CodeSuggestion
-        input={this.state.input}
-        output={this.state.output}
-        code={this.state.code}
-      />
-    )
-  }
-
-  renderHistory(){
-    return (
-      <History suggestions={this.state.suggestions} />
-    )
+    this.props.setInputOutput(this.state.input, this.state.output)
   }
 
   render() {
     return (
       <div>
-        User Input:
         <form onSubmit={this.handleSubmit}>
           <input name="input" type="text" onChange={this.handleChange} />
           <input name="output" type="text" onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
-        Code Suggestion:
-        {this.renderCodeSuggestion()}
-        History:
-        {this.renderHistory()}
       </div>
     );
+  }
+}
+
+class Summary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      output: '',
+      code: '',
+      history: []
+    }
+
+    this.setInputOutput = this.setInputOutput.bind(this)
+  }
+
+  setInputOutput(input, output){
+    this.setState({
+      input: input,
+      output: output
+    });
+  };
+
+  render() {
+    return(
+      <div>
+        User Input:
+        <InputForm setInputOutput={this.setInputOutput}/>
+        Code Suggestion:
+        <CodeSuggestion input={this.state.input} output={this.state.output} />
+        History:
+        <History history={this.state.history} />
+      </div>
+    )
   }
 }
 
@@ -106,7 +125,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <InputForm />
+        <Summary />
       </div>
     )
   }
