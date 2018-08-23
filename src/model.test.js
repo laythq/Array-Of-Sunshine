@@ -15,6 +15,12 @@ describe('workOutType', () => {
   test('it turns a null string into null', () => {
     expect(workOutType('null')).toBe(null);
   });
+  test('it turns a true string into boolean true value', () => {
+    expect(workOutType('true')).toBe(true)
+  });
+  test('it turns a false string into boolean false value', () => {
+    expect(workOutType('false')).toBe(false)
+  });
 });
 
 describe('workOutArray', () => {
