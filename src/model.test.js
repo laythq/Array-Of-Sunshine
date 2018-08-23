@@ -2,6 +2,12 @@ import {
   findMethod, workOutType, workOutArray, processInput,
 } from './model';
 
+describe('processInput', () => {
+  test('it correctly processes a quoted array', () => {
+    expect(JSON.stringify(processInput('"["a", 2, true, null, [5]]"'))).toBe(JSON.stringify(['a', 2, true, null, [5]]));
+  });
+});
+
 describe('workOutType', () => {
   test('it turns a single quoted string into a string', () => {
     expect(workOutType("'This is a string'")).toBe('This is a string');

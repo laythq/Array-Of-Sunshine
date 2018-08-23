@@ -8,23 +8,25 @@ const methodList = [
 ];
 
 function workOutType(string) {
-  if (string.match(/^\[.*]$/)) return workOutArray(string);
-  if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
-  if (string.match(/^".*"$/)) return string.replace(/[(^")("$)]/g, '');
-  if (string.match(/^\d+$/)) return parseInt(string, 10);
-  if (string === 'null') return null;
-  if (string === 'true') return true;
-  if (string === 'false') return false;
-  return string;
+  const testString = string.trim();
+  if (testString.match(/^\[.*]$/)) return workOutArray(testString);
+  if (testString.match(/^'.*'$/)) return testString.replace(/[(^')('$)]/g, '');
+  if (testString.match(/^".*"$/)) return testString.replace(/[(^")("$)]/g, '');
+  if (testString.match(/^\d+$/)) return parseInt(testString, 10);
+  if (testString === 'null') return null;
+  if (testString === 'true') return true;
+  if (testString === 'false') return false;
+  return testString;
 }
 
 function processInput(inputString) {
   const contents = inputString.replace(/[(^")("$)]/g, '');
-  workOutType(contents);
+  return workOutType(contents);
 }
 
 function workOutArray(string) {
   const contents = string.replace(/^\[/g, '').replace(/]$/g, '');
+  console.log(contents.split(',').map(x => workOutType(x)));
   return contents.split(',').map(x => workOutType(x));
 }
 
