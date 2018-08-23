@@ -11,8 +11,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject"
+    "test": "./node_modules/jest/bin/jest.js",
+    "eject": "react-scripts eject",
+    "coverage": "istanbul cover ./node_modules/jest/bin/jest.js"
+
   },
   "devDependencies": {
     "ajv": "^6.5.3",
