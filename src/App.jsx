@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { change } from './placeholder_model_EF';
+import { processInput, findMethod } from './model';
 
 class History extends React.Component {
   generateHistory() {
@@ -20,7 +21,9 @@ class CodeSuggestion extends React.Component {
     if (!this.props.input) {
       return null;
     }
-    const codeSuggestion = change(this.props.input, this.props.output);
+    const processedInput = processInput(this.props.input);
+    const processedOutput = processInput(this.props.output);
+    const codeSuggestion = findMethod(processedInput, processedOutput);
     this.props.logSuggestion(this.props.input, this.props.output, codeSuggestion);
     return (
       <div>
