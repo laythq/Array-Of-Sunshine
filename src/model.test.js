@@ -12,6 +12,9 @@ describe('workOutType', () => {
   test('it turns an integer string into an integer', () => {
     expect(workOutType('2')).toBe(2);
   });
+  test('it turns a null string into null', () => {
+    expect(workOutType('null')).toBe(null);
+  });
 });
 
 describe('workOutArray', () => {

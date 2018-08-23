@@ -11,6 +11,7 @@ function workOutType(string) {
   if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
   if (string.match(/^".*"$/)) return string.replace(/[(^")("$)]/g, '');
   if (string.match(/^\d+$/)) return parseInt(string);
+  if (string === "null") return null
   return string;
 }
 
