@@ -7,23 +7,25 @@ const methodList = [
   Array.prototype.toString,
 ];
 
+function processInput(inputString) {
+  let contents = inputString.replace(/[(^")("$)]/g, '');
+  workOutType(contents);
+}
+
 function workOutType(string) {
-  if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
-  if (string.match(/^".*"$/)) return string.replace(/[(^")("$)]/g, '');
-  if (string.match(/^\d+$/) ) return parseInt(string);
-  if (string === "null"     ) return null
-  if (string === "true"     ) return true
-  if (string === "false"    ) return false
+  if (string.match(/^\[.*]$/)) return workOutArray(string)
+  if (string.match(/^'.*'$/) ) return string.replace(/[(^')('$)]/g, '');
+  if (string.match(/^".*"$/) ) return string.replace(/[(^")("$)]/g, '');
+  if (string.match(/^\d+$/)  ) return parseInt(string);
+  if (string === "null"      ) return null
+  if (string === "true"      ) return true
+  if (string === "false"     ) return false
   return string;
 }
 
-function workOutArray(inputString) {
-  let contents = workOutType(inputString);
-  if (typeof contents === 'string' && contents.match(/^\[.*]$/)) {
-    contents = contents.replace(/[(^[)(\]$)]/g, '');
-    return contents.split(',').map(x => workOutType(x));
-  }
-  return contents;
+function workOutArray(contents) {
+  contents = contents.replace(/^\[/g,'').replace(/\]$/g, '');
+  return contents.split(',').map(x => workOutType(x));
 }
 
 function findMethod(inputArray, desiredOutput) {
@@ -44,4 +46,5 @@ module.exports = {
   findMethod,
   workOutType,
   workOutArray,
+  processInput,
 };

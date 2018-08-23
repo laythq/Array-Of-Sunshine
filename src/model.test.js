@@ -1,4 +1,4 @@
-import { findMethod, workOutType, workOutArray } from './model';
+import { findMethod, workOutType, workOutArray, processInput } from './model';
 
 describe('workOutType', () => {
   test('it turns a single quoted string into a string', () => {
@@ -24,6 +24,8 @@ describe('workOutType', () => {
 });
 
 describe('workOutArray', () => {
+
+
   test('it fully parses an array string of integers', () => {
     expect(JSON.stringify(workOutArray('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
   });
@@ -44,6 +46,7 @@ describe('workOutArray', () => {
     expect(workOutArray("3")).toBe(3);
   });
 });
+
 
 describe('findMethod', () => {
   test('it returns .join when required for desiredOutput', () => {
