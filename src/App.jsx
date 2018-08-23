@@ -1,102 +1,123 @@
 import React, { Component } from 'react';
-import {change} from './placeholder_model_EF';
+import { change } from './placeholder_model_EF';
 
 class History extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: props.suggestions
-    }
-  }
-
-  render(){
-    const list = this.generateHistory()
-    return(
-      <div>{list}</div>
-    )
-  }
-
   generateHistory() {
-    const items = this.state.history.reverse()
-    const history = items.map((item, index) =>
-      <div key={index}>{item}</div>
-    )
-    return history
+    const items = this.props.history.map(item => item.slice());
+    return items.reverse().map((item, index) => <div key={index}>{item}</div>);
   }
 
+  render() {
+    const list = this.generateHistory();
+    return (
+      <div>{list}</div>
+    );
+  }
 }
 
-function CodeSuggestion(props) {
-  return (
-    <div>{props.input} > {props.output} = {props.code}</div>
-  )
+class CodeSuggestion extends React.Component {
+  render() {
+    if (!this.props.input) {
+      return null;
+    }
+    const codeSuggestion = change(this.props.input, this.props.output);
+    this.props.logSuggestion(this.props.input, this.props.output, codeSuggestion);
+    return (
+      <div>
+        {this.props.input}
+        >
+        {this.props.output}
+        =
+        {codeSuggestion}
+      </div>
+    );
+  }
 }
 
 class InputForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: 'input',
-      output: 'output',
-      code: 'code',
-      suggestions: []
+      input: null,
+      output: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderCodeSuggestion = this.renderCodeSuggestion.bind(this);
   }
 
   handleChange(event) {
-    const name = event.target.name
+    const name = event.target.name;
     this.setState({
-      [name]: event.target.value
-    })
+      [name]: event.target.value,
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    let code = change(this.state.input, this.state.output)
-    this.setState({
-      code: code
-    })
-    this.storeSuggestion(code);
-  }
-
-  storeSuggestion(code) {
-    let suggestion = <div>{this.state.input} > {this.state.output} = {code}</div>
-    this.state.suggestions.push(suggestion)
-  }
-
-  renderCodeSuggestion() {
-    return (
-      <CodeSuggestion
-        input={this.state.input}
-        output={this.state.output}
-        code={this.state.code}
-      />
-    )
-  }
-
-  renderHistory(){
-    return (
-      <History suggestions={this.state.suggestions} />
-    )
+    this.props.setInputOutput(this.state.input, this.state.output);
   }
 
   render() {
     return (
       <div>
-        User Input:
         <form onSubmit={this.handleSubmit}>
           <input name="input" type="text" onChange={this.handleChange} />
           <input name="output" type="text" onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
-        Code Suggestion:
-        {this.renderCodeSuggestion()}
-        History:
-        {this.renderHistory()}
+      </div>
+    );
+  }
+}
+
+class Summary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: null,
+      output: null,
+      history: [],
+    };
+
+    this.setInputOutput = this.setInputOutput.bind(this);
+    this.logSuggestion = this.logSuggestion.bind(this);
+  }
+
+  setInputOutput(input, output) {
+    this.setState({
+      input,
+      output,
+    });
+  }
+
+  logSuggestion(input, output, code) {
+    this.state.history.push(`${input} > ${output} = ${code}`);
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          User Input:
+          <InputForm
+            setInputOutput={this.setInputOutput}
+          />
+        </div>
+        <div>
+          Code Suggestion:
+          <CodeSuggestion
+            input={this.state.input}
+            output={this.state.output}
+            logSuggestion={this.logSuggestion}
+          />
+        </div>
+        <div>
+          History:
+          <History
+            history={this.state.history}
+          />
+        </div>
       </div>
     );
   }
@@ -104,11 +125,11 @@ class InputForm extends React.Component {
 
 class App extends React.Component {
   render() {
-    return(
+    return (
       <div>
-        <InputForm />
+        <Summary />
       </div>
-    )
+    );
   }
 }
 
