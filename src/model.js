@@ -26,7 +26,6 @@ function processInput(inputString) {
 
 function workOutArray(string) {
   const contents = string.replace(/^\[/g, '').replace(/]$/g, '');
-  console.log(contents.split(',').map(x => workOutType(x)));
   return contents.split(',').map(x => workOutType(x));
 }
 
