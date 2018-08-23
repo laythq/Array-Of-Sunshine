@@ -1,4 +1,6 @@
-import { findMethod, workOutType, workOutArray, processInput } from './model';
+import {
+  findMethod, workOutType, workOutArray, processInput,
+} from './model';
 
 describe('workOutType', () => {
   test('it turns a single quoted string into a string', () => {
@@ -12,29 +14,33 @@ describe('workOutType', () => {
   test('it turns an integer string into an integer', () => {
     expect(workOutType('2')).toBe(2);
   });
+
   test('it turns a null string into null', () => {
     expect(workOutType('null')).toBe(null);
   });
+
   test('it turns a true string into boolean true value', () => {
-    expect(workOutType('true')).toBe(true)
+    expect(workOutType('true')).toBe(true);
   });
+
   test('it turns a false string into boolean false value', () => {
-    expect(workOutType('false')).toBe(false)
+    expect(workOutType('false')).toBe(false);
   });
+
   test('it fully parses a double quoted array string of mixed elements', () => {
     expect(JSON.stringify(workOutType('["a",2,"c"]'))).toBe(JSON.stringify(['a', 2, 'c']));
   });
+
   test('it fully parses a double quoted array string of strings', () => {
     expect(JSON.stringify(workOutType('["a","b","c"]'))).toBe(JSON.stringify(['a', 'b', 'c']));
   });
+
   test('it fully parses a double quoted array string of integers', () => {
     expect(JSON.stringify(workOutType('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
   });
 });
 
 describe('workOutArray', () => {
-
-
   test('it fully parses an array string of integers', () => {
     expect(JSON.stringify(workOutArray('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
   });

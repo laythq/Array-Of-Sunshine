@@ -7,39 +7,40 @@ const methodList = [
   Array.prototype.toString,
 ];
 
-function processInput(inputString) {
-  let contents = inputString.replace(/[(^")("$)]/g, '');
-  workOutType(contents);
-}
-
 function workOutType(string) {
-  if (string.match(/^\[.*]$/)) return workOutArray(string)
-  if (string.match(/^'.*'$/) ) return string.replace(/[(^')('$)]/g, '');
-  if (string.match(/^".*"$/) ) return string.replace(/[(^")("$)]/g, '');
-  if (string.match(/^\d+$/)  ) return parseInt(string);
-  if (string === "null"      ) return null
-  if (string === "true"      ) return true
-  if (string === "false"     ) return false
+  if (string.match(/^\[.*]$/)) return workOutArray(string);
+  if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
+  if (string.match(/^".*"$/)) return string.replace(/[(^")("$)]/g, '');
+  if (string.match(/^\d+$/)) return parseInt(string, 10);
+  if (string === 'null') return null;
+  if (string === 'true') return true;
+  if (string === 'false') return false;
   return string;
 }
 
-function workOutArray(contents) {
-  contents = contents.replace(/^\[/g,'').replace(/\]$/g, '');
+function processInput(inputString) {
+  const contents = inputString.replace(/[(^")("$)]/g, '');
+  workOutType(contents);
+}
+
+function workOutArray(string) {
+  const contents = string.replace(/^\[/g, '').replace(/]$/g, '');
   return contents.split(',').map(x => workOutType(x));
+}
+
+function compareArrays(testArray, desiredOutput, method) {
+  return JSON.stringify(method.call(testArray)) === JSON.stringify(desiredOutput);
 }
 
 function findMethod(inputArray, desiredOutput) {
   const outputArray = [];
-  for (const i in methodList) {
-    const testArray = inputArray.slice();
-    if (JSON.stringify(methodList[i].call(testArray)) === JSON.stringify(desiredOutput)) {
-      outputArray.push(`.${methodList[i].name}`);
+  methodList.forEach((method) => {
+    if (compareArrays(inputArray.slice(), desiredOutput, method)) {
+      outputArray.push(`.${method.name}`);
     }
-  }
-  if (outputArray.length > 0) {
-    return outputArray;
-  }
-  return ['No method found'];
+  });
+
+  return outputArray.length > 0 ? outputArray : ['No method found'];
 }
 
 module.exports = {
