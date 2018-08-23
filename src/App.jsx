@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { change } from './placeholder_model_EF';
 import { processInput, findMethod } from './model';
 
 class History extends React.Component {
