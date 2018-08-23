@@ -1,0 +1,15 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=579e877607570b4d0f1e7237aeea18480e0a744d74b9b1871d703a40ceddfec0
+
+language: node_js
+
+node_js:
+  - "stable"
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm test
