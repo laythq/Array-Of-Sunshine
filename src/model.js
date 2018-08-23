@@ -11,15 +11,16 @@ function workOutType(string) {
   if (string.match(/^'.*'$/)) return string.replace(/[(^')('$)]/g, '');
   if (string.match(/^".*"$/)) return string.replace(/[(^")("$)]/g, '');
   if (string.match(/^\d+$/)) return parseInt(string);
-  return string
+  return string;
 }
 
 function workOutArray(inputString) {
-  let string = workOutType(inputString)
-  if (string.match(/^\[.*\]$/)){
-    string = string.replace(/[(^\[)(\]$)]/g, '');
-    return string.split(',').map(x => workOutType(x));
+  let contents = workOutType(inputString);
+  if (typeof contents === 'string' && contents.match(/^\[.*]$/)) {
+    contents = contents.replace(/[(^[)(\]$)]/g, '');
+    return contents.split(',').map(x => workOutType(x));
   }
+  return contents;
 }
 
 function findMethod(inputArray, desiredOutput) {
