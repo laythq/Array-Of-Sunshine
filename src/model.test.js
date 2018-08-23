@@ -21,6 +21,15 @@ describe('workOutType', () => {
   test('it turns a false string into boolean false value', () => {
     expect(workOutType('false')).toBe(false)
   });
+  test('it fully parses a double quoted array string of mixed elements', () => {
+    expect(JSON.stringify(workOutType('["a",2,"c"]'))).toBe(JSON.stringify(['a', 2, 'c']));
+  });
+  test('it fully parses a double quoted array string of strings', () => {
+    expect(JSON.stringify(workOutType('["a","b","c"]'))).toBe(JSON.stringify(['a', 'b', 'c']));
+  });
+  test('it fully parses a double quoted array string of integers', () => {
+    expect(JSON.stringify(workOutType('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
+  });
 });
 
 describe('workOutArray', () => {
@@ -28,22 +37,6 @@ describe('workOutArray', () => {
 
   test('it fully parses an array string of integers', () => {
     expect(JSON.stringify(workOutArray('[1,2,3]'))).toBe(JSON.stringify([1, 2, 3]));
-  });
-
-  test('it fully parses a double quoted array string of integers', () => {
-    expect(JSON.stringify(workOutArray('"[1,2,3]"'))).toBe(JSON.stringify([1, 2, 3]));
-  });
-
-  test('it fully parses a double quoted array string of strings', () => {
-    expect(JSON.stringify(workOutArray('"["a","b","c"]"'))).toBe(JSON.stringify(["a", "b", "c"]));
-  });
-
-  test('it fully parses a double quoted array string of mixed elements', () => {
-    expect(JSON.stringify(workOutArray('"["a",2,"c"]"'))).toBe(JSON.stringify(["a", 2, "c"]));
-  });
-
-  test('it solely works out the type of the input if not an array', () => {
-    expect(workOutArray("3")).toBe(3);
   });
 });
 
