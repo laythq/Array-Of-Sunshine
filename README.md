@@ -23,13 +23,13 @@ In other words:
 - Suggests methods to get from an input to an output, for example:
     1. User enters [a,b,c] as the input and [c,b,a] as the output
     2. Program returns `input.reverse` to the user
-- Can  be used for a number of different programming languages 
+- Can  be used for a number of different programming languages
 
 ### 🌞 MVP
 ```
 As a user
 So that I can use the right array method in Ruby
-I want to be able to input a simple initial array and a simple target array and be 
+I want to be able to input a simple initial array and a simple target array and be
 given the method which gets me from one to the other
 ```
 In practice this is:
@@ -46,7 +46,7 @@ I want an extension to my text editor which suggests code for me
 
 As a user
 So that I can use the right array method in multiple languages
-I want to be able to input initial and output arrays in eg. Ruby, Javascript, C++, 
+I want to be able to input initial and output arrays in eg. Ruby, Javascript, C++,
 Python and Whitespace
 
 As a user
@@ -64,7 +64,7 @@ I want to be able to use arrays which take arguments
 As a user
 So that I can use the tool for more complex methods
 I want to be able to input other objects than arrays (multi-dimensional arrays,
-hashes, strings)
+hashes, strings) 
 ```
 ### Todo
 1. Stack info
