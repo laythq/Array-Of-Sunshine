@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import {change} from './placeholder_model_EF';
 
 class History extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: props.history
-    }
+
+  generateHistory() {
+    let items = this.props.history.map(item => item.slice())
+    let reversedItems = items.reverse()
+    const history = items.map((item, index) =>
+      <div key={index}>{item}</div>
+    )
+    return history
   }
 
   render(){
@@ -15,38 +18,19 @@ class History extends React.Component {
       <div>{list}</div>
     )
   }
-
-  generateHistory() {
-    const items = this.state.history.reverse()
-    const history = items.map((item, index) =>
-      <div key={index}>{item}</div>
-    )
-    return history
-  }
-
 }
 
 class CodeSuggestion extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      code: ''
-    };
-    this.generateSuggestion = this.generateSuggestion.bind(this);
-  }
 
   render(){
-    this.generateSuggestion;
+    if (!this.props.input){
+      return null
+    }
+    let codeSuggestion = change(this.props.input, this.props.output)
+    this.props.logSuggestion(this.props.input, this.props.output, codeSuggestion)
     return(
-      <div>{this.props.input} > {this.props.output} = {this.state.code}</div>
+      <div>{this.props.input} > {this.props.output} = {codeSuggestion}</div>
     )
-  }
-
-  generateSuggestion(props){
-    let code = change(props.input, props.output)
-    this.setState({
-      code: code
-    })
   }
 }
 
@@ -54,8 +38,8 @@ class InputForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
-      output: '',
+      input: null,
+      output: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -91,13 +75,13 @@ class Summary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
-      output: '',
-      code: '',
+      input: null,
+      output: null,
       history: []
     }
 
     this.setInputOutput = this.setInputOutput.bind(this)
+    this.logSuggestion = this.logSuggestion.bind(this)
   }
 
   setInputOutput(input, output){
@@ -107,15 +91,25 @@ class Summary extends React.Component {
     });
   };
 
+  logSuggestion(input, output, code){
+    this.state.history.push(`${input} > ${output} = ${code}`)
+  }
+
   render() {
     return(
       <div>
-        User Input:
-        <InputForm setInputOutput={this.setInputOutput}/>
-        Code Suggestion:
-        <CodeSuggestion input={this.state.input} output={this.state.output} />
-        History:
-        <History history={this.state.history} />
+        <div>
+          User Input:
+          <InputForm setInputOutput={this.setInputOutput}/>
+        </div>
+        <div>
+          Code Suggestion:
+          <CodeSuggestion input={this.state.input} output={this.state.output} logSuggestion={this.logSuggestion} />
+        </div>
+        <div>
+          History:
+          <History history={this.state.history} />
+        </div>
       </div>
     )
   }
