@@ -10,20 +10,18 @@ class History extends React.Component {
   }
 
   render(){
-    const list = this.listHistory()
+    const list = this.generateHistory()
     return(
       <div>{list}</div>
     )
   }
 
-  listHistory() {
+  generateHistory() {
     const items = this.state.history.reverse()
-    const listItems = items.map((item, index) =>
-      <div key={index}>
-        {item}
-      </div>
+    const history = items.map((item, index) =>
+      <div key={index}>{item}</div>
     )
-    return listItems
+    return history
   }
 
 }
