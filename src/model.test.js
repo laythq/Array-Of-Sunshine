@@ -12,7 +12,7 @@ describe('workOutType', () => {
   test('it turns an integer string into an integer', () => {
     expect(workOutType('2')).toBe(2);
   });
-})
+});
 
 describe('workOutArray', () => {
   test('it fully parses an array string of integers', () => {
@@ -22,10 +22,19 @@ describe('workOutArray', () => {
   test('it fully parses a double quoted array string of integers', () => {
     expect(JSON.stringify(workOutArray('"[1,2,3]"'))).toBe(JSON.stringify([1, 2, 3]));
   });
+
+  test('it fully parses a double quoted array string of strings', () => {
+    expect(JSON.stringify(workOutArray('"["a","b","c"]"'))).toBe(JSON.stringify(["a", "b", "c"]));
+  });
+
+  test('it fully parses a double quoted array string of mixed elements', () => {
+    expect(JSON.stringify(workOutArray('"["a",2,"c"]"'))).toBe(JSON.stringify(["a", 2, "c"]));
+  });
+
   test('it solely works out the type of the input if not an array', () => {
     expect(workOutArray("3")).toBe(3);
   });
-})
+});
 
 describe('findMethod', () => {
   test('it returns .join when required for desiredOutput', () => {
@@ -55,4 +64,4 @@ describe('findMethod', () => {
   test('it returns .toString when appropriate', () => {
     expect(findMethod([1, 2, 3], '1,2,3')).toContain('.toString');
   });
-})
+});
