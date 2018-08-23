@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
 import {change} from './placeholder_model_EF';
 
-// playing with creating a history, ignore for now
 class History extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      history: props.suggestions
+    }
   }
 
   render(){
+    const list = this.listHistory()
     return(
-      <div>Hello {this.props.name}</div>
+      <div>{list}</div>
     )
   }
+
+  listHistory() {
+    const items = this.state.history.reverse()
+    const listItems = items.map((item, index) =>
+      <div key={index}>
+        {item}
+      </div>
+    )
+    return listItems
+  }
+
 }
-// -----------------------------------------------
 
 function CodeSuggestion(props) {
   return (
@@ -27,7 +40,8 @@ class InputForm extends React.Component {
     this.state = {
       input: 'input',
       output: 'output',
-      code: 'code'
+      code: 'code',
+      suggestions: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,11 +57,17 @@ class InputForm extends React.Component {
   }
 
   handleSubmit(event) {
-    const code = change(this.state.input, this.state.output)
+    event.preventDefault();
+    let code = change(this.state.input, this.state.output)
     this.setState({
       code: code
     })
-    event.preventDefault();
+    this.storeSuggestion(code);
+  }
+
+  storeSuggestion(code) {
+    let suggestion = <div>{this.state.input} > {this.state.output} = {code}</div>
+    this.state.suggestions.push(suggestion)
   }
 
   renderCodeSuggestion() {
@@ -60,24 +80,24 @@ class InputForm extends React.Component {
     )
   }
 
-  // playing with creating a history, ignore for now
   renderHistory(){
     return (
-      <History name="elishka" />
+      <History suggestions={this.state.suggestions} />
     )
   }
-  // -----------------------------------------------
 
   render() {
     return (
       <div>
+        User Input:
         <form onSubmit={this.handleSubmit}>
           <input name="input" type="text" onChange={this.handleChange} />
           <input name="output" type="text" onChange={this.handleChange} />
           <input type="submit" value="Submit" />
         </form>
+        Code Suggestion:
         {this.renderCodeSuggestion()}
-        {/* playing with creating a history, ignore for now */}
+        History:
         {this.renderHistory()}
       </div>
     );
