@@ -29,8 +29,8 @@ function parseArray(string) {
   return contents.split(',').map(x => parseString(x));
 }
 
-function compareArrays(testArray, desiredOutput, method) {
-  return JSON.stringify(method.call(testArray)) === JSON.stringify(desiredOutput);
+function compareArrays(array1, array2, method) {
+  return JSON.stringify(method.call(array1)) === JSON.stringify(array2);
 }
 
 function findMethod(inputArray, desiredOutput) {
@@ -46,7 +46,5 @@ function findMethod(inputArray, desiredOutput) {
 
 module.exports = {
   findMethod,
-  workOutType: parseString,
-  workOutArray: parseArray,
   processInput,
 };
