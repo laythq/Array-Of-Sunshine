@@ -1,7 +1,7 @@
 import React from 'react';
 import {findMethod, processInput} from './model';
 
-class CodeSuggestion extends React.Component {
+export class CodeSuggestion extends React.Component {
   render() {
     if (!this.props.input) {
       return null;
