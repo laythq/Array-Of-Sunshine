@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   findMethod, workOutType, workOutArray, processInput,
 } from './model';
