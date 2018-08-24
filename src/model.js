@@ -7,9 +7,9 @@ const methodList = [
   Array.prototype.toString,
 ];
 
-function workOutType(string) {
+function parseString(string) {
   const testString = string.trim();
-  if (testString.match(/^\[.*]$/)) return workOutArray(testString);
+  if (testString.match(/^\[.*]$/)) return parseArray(testString);
   if (testString.match(/^'.*'$/)) return testString.replace(/[(^')('$)]/g, '');
   if (testString.match(/^".*"$/)) return testString.replace(/[(^")("$)]/g, '');
   if (testString.match(/^\d+$/)) return parseInt(testString, 10);
@@ -21,12 +21,12 @@ function workOutType(string) {
 
 function processInput(inputString) {
   const contents = inputString.replace(/[(^")("$)]/g, '');
-  return workOutType(contents);
+  return parseString(contents);
 }
 
-function workOutArray(string) {
+function parseArray(string) {
   const contents = string.replace(/^\[/g, '').replace(/]$/g, '');
-  return contents.split(',').map(x => workOutType(x));
+  return contents.split(',').map(x => parseString(x));
 }
 
 function compareArrays(testArray, desiredOutput, method) {
@@ -46,7 +46,7 @@ function findMethod(inputArray, desiredOutput) {
 
 module.exports = {
   findMethod,
-  workOutType,
-  workOutArray,
+  workOutType: parseString,
+  workOutArray: parseArray,
   processInput,
 };
