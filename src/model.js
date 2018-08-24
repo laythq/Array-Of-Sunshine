@@ -46,5 +46,7 @@ function findMethod(inputArray, desiredOutput) {
 
 module.exports = {
   findMethod,
+  parseString,
+  parseArray,
   processInput,
 };

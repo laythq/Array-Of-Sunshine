@@ -10,7 +10,7 @@ class History extends React.Component {
   render() {
     const list = this.generateHistory();
     return (
-      <div>{list}</div>
+        <div>{list}</div>
     );
   }
 }
@@ -41,13 +41,13 @@ class InputForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input name="input" type="text" onChange={this.handleChange} />
-          <input name="output" type="text" onChange={this.handleChange} />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input name="input" type="text" onChange={this.handleChange} />
+            <input name="output" type="text" onChange={this.handleChange} />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
     );
   }
 }
@@ -78,40 +78,28 @@ class Summary extends React.Component {
 
   render() {
     return (
-      <div>
         <div>
-          User Input:
-          <InputForm
-            setInputOutput={this.setInputOutput}
-          />
+          <div>
+            User Input:
+            <InputForm
+                setInputOutput={this.setInputOutput}
+            />
+          </div>
+          <div>
+            Code Suggestion:
+            <CodeSuggestion
+                input={this.state.input}
+                output={this.state.output}
+                logSuggestion={this.logSuggestion}
+            />
+          </div>
+          <div>
+            History:
+            <History
+                history={this.state.history}
+            />
+          </div>
         </div>
-        <div>
-          Code Suggestion:
-          <CodeSuggestion
-            input={this.state.input}
-            output={this.state.output}
-            logSuggestion={this.logSuggestion}
-          />
-        </div>
-        <div>
-          History:
-          <History
-            history={this.state.history}
-          />
-        </div>
-      </div>
     );
   }
 }
-
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Summary />
-      </div>
-    );
-  }
-}
-
-export default App;
