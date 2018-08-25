@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { processInput, findMethod } from './suggestion.js';
+import React from 'react';
 import { Summary } from './summary';
 
 class App extends React.Component {

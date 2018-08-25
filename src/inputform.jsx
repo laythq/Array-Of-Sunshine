@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { setInputOutput } from './summary';
+import React from 'react';
+
 export class InputForm extends React.Component {
   constructor(props) {
     super(props);
@@ -26,13 +26,14 @@ export class InputForm extends React.Component {
 
   render() {
     return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input name="input" type="text" onChange={this.handleChange} />
-            <input name="output" type="text" onChange={this.handleChange} />
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input name="input" type="text" onChange={this.handleChange} />
+          <input name="output" type="text" onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
+export default InputForm;
