@@ -43,7 +43,7 @@ function findMethod(inputArray, desiredOutput) {
     const inputAfterFirstMethod = firstMethod.call(inputArray.slice());
     if (!Array.isArray(inputAfterFirstMethod)) { return; }
     methodList.forEach((secondMethod) => {
-      if (compareArrays(inputAfterFirstMethod, desiredOutput, secondMethod)) {
+      if (compareArrays(inputAfterFirstMethod.slice(), desiredOutput, secondMethod)) {
         outputArray.push(`.${firstMethod.name}.${secondMethod.name}`);
       }
     });

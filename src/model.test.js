@@ -113,5 +113,9 @@ describe('findMethod', () => {
     it('returns .reverse.pop when appropriate', () => {
       expect(findMethod([1,2,3], 1)).toContain('.reverse.pop')
     })
+
+    it('does not return .slice.toString when incorrect', () => {
+      expect(findMethod([1,2,3], '1')).not.toContain('.slice.toString')
+    })
   })
 });
