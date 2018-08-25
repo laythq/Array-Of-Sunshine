@@ -9,6 +9,7 @@ const methodList = [
 
 function parseString(string) {
   const testString = string.trim();
+  // eslint-disable-next-line
   if (testString.match(/^\[.*]$/)) return parseArray(testString);
   if (testString.match(/^'.*'$/)) return testString.replace(/[(^')('$)]/g, '');
   if (testString.match(/^".*"$/)) return testString.replace(/[(^")("$)]/g, '');
