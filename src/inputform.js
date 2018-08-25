@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { setInputOutput } from './summary';
+import React from 'react';
+
 export class InputForm extends React.Component {
   constructor(props) {
     super(props);

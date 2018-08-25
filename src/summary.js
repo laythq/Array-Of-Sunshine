@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { CodeSuggestion } from './suggestion.js';
 import { InputForm } from './inputform.js'
 import { History } from './history.js'
