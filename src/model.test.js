@@ -53,7 +53,7 @@ describe('parseArray', () => {
   });
 
   it('parses a nested array string of integers', () => {
-    expect(JSON.stringify(parseArray('[[1,2],[2,3],[4,5]]').toBe(JSON.stringify([[1,2],[2,3],[4,5]]))))
+    expect(JSON.stringify(parseArray('[[1,2],[2,3],[4,5]]'))).toBe(JSON.stringify([[1,2],[2,3],[4,5]]))
   })
 });
 

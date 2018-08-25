@@ -26,7 +26,7 @@ function processInput(inputString) {
 
 function parseArray(string) {
   const contents = string.replace(/^\[/g, '').replace(/]$/g, '');
-  return contents.split(',').map(x => parseString(x));
+  return contents.split(/,(?![^[]*])/g).map(x => parseString(x));
 }
 
 function compareArrays(array1, array2, method) {
