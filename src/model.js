@@ -7,11 +7,12 @@ const methodList = [
   Array.prototype.toString,
 ];
 
-function workOutType(string) {
+function parseString(string) {
   const testString = string.trim();
-  if (testString.match(/^\[.*]$/)) return workOutArray(testString);
+  if (testString.match(/^\[.*]$/)) return parseArray(testString);
   if (testString.match(/^'.*'$/)) return testString.replace(/[(^')('$)]/g, '');
   if (testString.match(/^".*"$/)) return testString.replace(/[(^")("$)]/g, '');
+  if (testString.match(/^\d+.\d*$/)) return parseFloat(testString, 10);
   if (testString.match(/^\d+$/)) return parseInt(testString, 10);
   if (testString === 'null') return null;
   if (testString === 'true') return true;
@@ -21,24 +22,35 @@ function workOutType(string) {
 
 function processInput(inputString) {
   const contents = inputString.replace(/[(^")("$)]/g, '');
-  return workOutType(contents);
+  return parseString(contents);
 }
 
-function workOutArray(string) {
+function parseArray(string) {
   const contents = string.replace(/^\[/g, '').replace(/]$/g, '');
-  return contents.split(',').map(x => workOutType(x));
+  return contents.split(/,(?![^[]*])/g).map(x => parseString(x));
 }
 
-function compareArrays(testArray, desiredOutput, method) {
-  return JSON.stringify(method.call(testArray)) === JSON.stringify(desiredOutput);
+function compareArrays(array1, array2, method) {
+  return JSON.stringify(method.call(array1)) === JSON.stringify(array2);
+}
+
+function deepCopy(array) {
+  return JSON.parse(JSON.stringify(array));
 }
 
 function findMethod(inputArray, desiredOutput) {
   const outputArray = [];
-  methodList.forEach((method) => {
-    if (compareArrays(inputArray.slice(), desiredOutput, method)) {
-      outputArray.push(`.${method.name}`);
+  methodList.forEach((firstMethod) => {
+    if (compareArrays(deepCopy(inputArray), desiredOutput, firstMethod)) {
+      outputArray.push(`.${firstMethod.name}`);
     }
+    const inputAfterFirstMethod = firstMethod.call(deepCopy(inputArray));
+    if (!Array.isArray(inputAfterFirstMethod)) { return; }
+    methodList.forEach((secondMethod) => {
+      if (compareArrays(deepCopy(inputAfterFirstMethod), desiredOutput, secondMethod)) {
+        outputArray.push(`.${firstMethod.name}.${secondMethod.name}`);
+      }
+    });
   });
 
   return outputArray.length > 0 ? outputArray : ['No method found'];
@@ -46,7 +58,7 @@ function findMethod(inputArray, desiredOutput) {
 
 module.exports = {
   findMethod,
-  workOutType,
-  workOutArray,
+  parseString,
+  parseArray,
   processInput,
 };
