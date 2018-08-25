@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
 import { processInput, findMethod } from './model';
 
+class Test extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: null,
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/hello')
+      .then(response => response.json())
+      .then(data => this.setState({text: data}))
+  }
+
+  render() {
+    let text = this.state.text
+    return (
+      <div>
+        {text}
+      </div>
+    )
+  }
+
+}
+
 class History extends React.Component {
   generateHistory() {
     const items = this.props.history.map(item => item.slice());
@@ -104,6 +129,10 @@ class Summary extends React.Component {
   render() {
     return (
       <div>
+        <div>
+          Test:
+          <Test />
+        </div>
         <div>
           User Input:
           <InputForm

@@ -11,8 +11,8 @@ app.get('/ping', function (req, res) {
 
 app.get('/hello', async (req, res, next) => {
   try {
-    var text = { text: 'hello' }
-    res.json(text)
+    var text = 'Hello world!'
+    res(text)
   } catch (err) {
     next(err)
   }
