@@ -9,7 +9,8 @@ export class History extends React.Component {
   render() {
     const list = this.generateHistory();
     return (
-        <div>{list}</div>
+      <div>{list}</div>
     );
   }
 }
+export default History;

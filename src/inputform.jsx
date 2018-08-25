@@ -26,13 +26,14 @@ export class InputForm extends React.Component {
 
   render() {
     return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input name="input" type="text" onChange={this.handleChange} />
-            <input name="output" type="text" onChange={this.handleChange} />
-            <input type="submit" value="Submit" />
-          </form>
-        </div>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input name="input" type="text" onChange={this.handleChange} />
+          <input name="output" type="text" onChange={this.handleChange} />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
+export default InputForm;

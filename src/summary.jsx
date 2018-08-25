@@ -1,7 +1,7 @@
 import React from 'react';
-import { CodeSuggestion } from './suggestion.js';
-import { InputForm } from './inputform.js'
-import { History } from './history.js'
+import { CodeSuggestion } from './suggestion';
+import { InputForm } from './inputform';
+import { History } from './history';
 
 export class Summary extends React.Component {
   constructor(props) {
@@ -29,28 +29,29 @@ export class Summary extends React.Component {
 
   render() {
     return (
+      <div>
         <div>
-          <div>
             User Input:
-            <InputForm
-                setInputOutput={this.setInputOutput}
-            />
-          </div>
-          <div>
-            Code Suggestion:
-            <CodeSuggestion
-                input={this.state.input}
-                output={this.state.output}
-                logSuggestion={this.logSuggestion}
-            />
-          </div>
-          <div>
-            History:
-            <History
-                history={this.state.history}
-            />
-          </div>
+          <InputForm
+            setInputOutput={this.setInputOutput}
+          />
         </div>
+        <div>
+            Code Suggestion:
+          <CodeSuggestion
+            input={this.state.input}
+            output={this.state.output}
+            logSuggestion={this.logSuggestion}
+          />
+        </div>
+        <div>
+            History:
+          <History
+            history={this.state.history}
+          />
+        </div>
+      </div>
     );
   }
 }
+export default Summary;

@@ -1,5 +1,6 @@
 import React from 'react';
-import {findMethod, processInput} from './model';
+
+import { findMethod, processInput } from './model';
 
 export class CodeSuggestion extends React.Component {
   render() {
@@ -9,13 +10,13 @@ export class CodeSuggestion extends React.Component {
     const codeSuggestion = this.getCodeSuggestion();
     this.props.logSuggestion(this.props.input, this.props.output, codeSuggestion);
     return (
-        <div>
-          {this.props.input}
+      <div>
+        {this.props.input}
           >
-          {this.props.output}
+        {this.props.output}
           =
-          {codeSuggestion}
-        </div>
+        {codeSuggestion}
+      </div>
     );
   }
 
@@ -25,3 +26,5 @@ export class CodeSuggestion extends React.Component {
     return findMethod(processedInput, processedOutput);
   }
 }
+
+export default CodeSuggestion;
