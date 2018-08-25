@@ -3,6 +3,13 @@ import React from 'react';
 import { findMethod, processInput } from './model';
 
 export class CodeSuggestion extends React.Component {
+
+  getCodeSuggestion() {
+    const processedInput = processInput(this.props.input);
+    const processedOutput = processInput(this.props.output);
+    return findMethod(processedInput, processedOutput);
+  }
+
   render() {
     if (!this.props.input) {
       return null;
@@ -18,12 +25,6 @@ export class CodeSuggestion extends React.Component {
         {codeSuggestion}
       </div>
     );
-  }
-
-  getCodeSuggestion() {
-    const processedInput = processInput(this.props.input);
-    const processedOutput = processInput(this.props.output);
-    return findMethod(processedInput, processedOutput);
   }
 }
 
