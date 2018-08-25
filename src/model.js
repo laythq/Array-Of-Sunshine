@@ -12,6 +12,7 @@ function parseString(string) {
   if (testString.match(/^\[.*]$/)) return parseArray(testString);
   if (testString.match(/^'.*'$/)) return testString.replace(/[(^')('$)]/g, '');
   if (testString.match(/^".*"$/)) return testString.replace(/[(^")("$)]/g, '');
+  if (testString.match(/^\d+.\d*$/)) return parseFloat(testString, 10);
   if (testString.match(/^\d+$/)) return parseInt(testString, 10);
   if (testString === 'null') return null;
   if (testString === 'true') return true;
