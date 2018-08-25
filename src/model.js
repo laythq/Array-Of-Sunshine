@@ -36,10 +36,17 @@ function compareArrays(array1, array2, method) {
 
 function findMethod(inputArray, desiredOutput) {
   const outputArray = [];
-  methodList.forEach((method) => {
-    if (compareArrays(inputArray.slice(), desiredOutput, method)) {
-      outputArray.push(`.${method.name}`);
+  methodList.forEach((firstMethod) => {
+    if (compareArrays(inputArray.slice(), desiredOutput, firstMethod)) {
+      outputArray.push(`.${firstMethod.name}`);
     }
+    const inputAfterFirstMethod = firstMethod.call(inputArray.slice());
+    if (!Array.isArray(inputAfterFirstMethod)) { return; }
+    methodList.forEach((secondMethod) => {
+      if (compareArrays(inputAfterFirstMethod, desiredOutput, secondMethod)) {
+        outputArray.push(`.${firstMethod.name}.${secondMethod.name}`);
+      }
+    });
   });
 
   return outputArray.length > 0 ? outputArray : ['No method found'];

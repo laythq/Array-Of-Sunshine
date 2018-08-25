@@ -98,4 +98,10 @@ describe('findMethod', () => {
   it('returns .toString when appropriate', () => {
     expect(findMethod([1, 2, 3], '1,2,3')).toContain('.toString');
   });
+
+  describe ('with nested arrays', () => {
+    it('returns .reverse.join when appropriate', () => {
+      expect(findMethod([1,2,3],'3,2,1')).toContain('.reverse.join')
+    })
+  })
 });
