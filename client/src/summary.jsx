@@ -2,7 +2,6 @@ import React from 'react';
 import { CodeSuggestion } from './suggestion';
 import { InputForm } from './inputform';
 import { History } from './history';
-import { Dummy } from './dummy';
 
 export class Summary extends React.Component {
   constructor(props) {
@@ -31,10 +30,6 @@ export class Summary extends React.Component {
   render() {
     return (
       <div>
-      <div>
-          Test:
-        <Dummy />
-      </div>
         <div>
             User Input:
           <InputForm

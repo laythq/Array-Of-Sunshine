@@ -9,7 +9,7 @@ app.get('/ping', function (req, res) {
  return res.send('pong');
 });
 
-app.get('/hello', async (req, res, next) => {
+app.get('/scripts', async (req, res, next) => {
   try {
     var text = 'Hello world!'
     res.json(text)
