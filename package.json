@@ -1,34 +1,33 @@
 {
   "name": "array_of_sunshine",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "## 🌞 How to use 1. Clone this repo 2. Navigate to the project directory and run `npm install` (requires node to be installed) 3. Run `npm start` and navigate to `http://localhost:3000`",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently 'npm run server' 'npm run client'",
+    "server": "node server/index.js",
+    "client": "cd client && npm start",
+    "test": "./node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laythq/array_of_sunshine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laythq/array_of_sunshine/issues"
+  },
+  "homepage": "https://github.com/laythq/array_of_sunshine#readme",
   "dependencies": {
-    "enzyme": "^3.4.4",
-    "enzyme-adapter-react-16": "^1.2.0",
-    "istanbul": "^0.4.5",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^4.0.0",
+    "express": "^4.16.3",
+    "jest": "^23.5.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject",
-    "coverage": "istanbul cover ./node_modules/jest/bin/jest.js"
-  },
-  "devDependencies": {
-    "ajv": "^6.5.3",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.4.2",
-    "enzyme-to-json": "^3.3.4",
-    "eslint": "^5.4.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-strongloop": "^2.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1",
-    "jest": "^23.5.0",
-    "regenerator-runtime": "^0.12.1"
   }
 }
