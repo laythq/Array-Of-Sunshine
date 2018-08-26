@@ -33,7 +33,7 @@ export class Summary extends React.Component {
       <div>
       <div>
           Test:
-        <Test />
+        <Dummy />
       </div>
         <div>
             User Input:
