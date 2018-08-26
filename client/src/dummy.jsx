@@ -9,7 +9,7 @@ export class Dummy extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/hello')
+    fetch(`/hello`)
       .then(response => response.json())
       .then(data => this.setState({text: data}))
   }
