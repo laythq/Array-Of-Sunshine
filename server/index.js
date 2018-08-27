@@ -21,19 +21,25 @@ app.post('/api/scripts', function (req, res) {
   const input = req.body.input
   const output = req.body.output
   const language = req.body.language
+  const exec = require('child_process').exec
   if(language === 'ruby'){
-    const exec = require('child_process').exec
     exec(`ruby ./server/src/script.rb ${input} ${output}`, function (error, stdout, stderr) {
       return res.send(stdout)
     })
+  } else if (language === 'python'){
+    exec(`python ./server/src/script.py ${input} ${output}`, function (error, stdout, stderr) {
+      return res.send(stdout)
+    })
+  }
   // res.json(language)
 });
 
-app.get('/ruby', function(req, res) {
+app.get('/python', function(req, res) {
+  console.log('python route called')
   const exec = require('child_process').exec
   const input = 'processed_input'
   const output = 'processed_output'
-  exec(`ruby ./server/src/script.rb ${input} ${output}`, function (error, stdout, stderr) {
+  exec(`python ./server/src/script.py ${input} ${output}`, function (error, stdout, stderr) {
     return res.send(stdout)
   })
 })
