@@ -23,10 +23,6 @@ describe('findMethod', () => {
       expect(findMethod([1, 2, 3], 1)).toContain('.shift');
     });
 
-    it('returns .slice when appropriate', () => {
-      expect(findMethod([1, 2, 3], [1, 2, 3])).toContain('.slice');
-    });
-
     it('returns .toString when appropriate', () => {
       expect(findMethod([1, 2, 3], '1,2,3')).toContain('.toString');
     });
@@ -50,11 +46,11 @@ describe('findMethod', () => {
         expect(findMethod([1,2,3], '1')).not.toContain('.slice.toString')
       })
     })
-  })
+  });
 
   describe('for one-argument methods', () => {
-    it('returns concat when appropriate', () => {
-      expect(findMethod([1,2,3], [1,2,3,4,5])).toContain('.concat([4,5])')
-    })
+    it('returns push when appropriate', () => {
+      expect(findMethod([1,2,3], [1,2,3,4])).toContain('.push(4)')
+    });
   })
 });

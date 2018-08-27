@@ -3,11 +3,11 @@ const zeroArgumentMethods = [
   Array.prototype.pop,
   Array.prototype.reverse,
   Array.prototype.shift,
-  Array.prototype.slice,
   Array.prototype.toString,
 ];
 
 const oneArgumentMethods = [
+  Array.prototype.slice,
   Array.prototype.concat,
   Array.prototype.fill,
   Array.prototype.indexOf,
@@ -16,7 +16,9 @@ const oneArgumentMethods = [
 ];
 
 function compareArrays(array1, array2, method, argument) {
-  return JSON.stringify(method.call(array1, argument)) === JSON.stringify(array2);
+  const sameReturnValue = JSON.stringify(method.call(array1, argument)) === JSON.stringify(array2);
+  const changedArrayTest = (JSON.stringify(array1) === JSON.stringify(array2));
+  return (sameReturnValue || changedArrayTest);
 }
 
 function deepCopy(array) {
@@ -42,13 +44,24 @@ function findZeroArgumentMethods(inputArray, desiredOutput) {
   return outputArray;
 }
 
-function suggestedArguments(inputArray, desiredOutput){
-  return [[4, 5]];
+function findDifferences(array1, array2) {
+  const inA = array1.filter(x => !array2.includes(x));
+  const inB = array2.filter(y => !array1.includes(y));
+  return inA.concat(inB);
+}
+
+function suggestArguments(inputArray, desiredOutput) {
+  let suggestedArguments = [];
+  // TODO split string by ',' if desiredOutput is a string.
+  if (Array.isArray(inputArray) && Array.isArray(desiredOutput)) {
+    suggestedArguments = suggestedArguments.concat(findDifferences(inputArray, desiredOutput));
+  }
+  return suggestedArguments;
 }
 
 function findOneArgumentMethods(inputArray, desiredOutput) {
   const outputArray = [];
-  const args = suggestedArguments(inputArray, desiredOutput);
+  const args = suggestArguments(inputArray, desiredOutput);
   oneArgumentMethods.forEach((method) => {
     args.forEach((argument) => {
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
@@ -60,6 +73,7 @@ function findOneArgumentMethods(inputArray, desiredOutput) {
 }
 
 function findMethod(inputArray, desiredOutput) {
+  if (JSON.stringify(inputArray) === JSON.stringify(desiredOutput)) return 'Same input and output';
   let outputArray = findZeroArgumentMethods(inputArray, desiredOutput);
   outputArray = outputArray.concat(findOneArgumentMethods(inputArray, desiredOutput));
   return outputArray.length > 0 ? outputArray : ['No method found'];
