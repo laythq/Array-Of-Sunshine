@@ -7,7 +7,6 @@ values = ["''.join({})", "{}.pop()", "{}.reverse()", "{}.pop(0)", "''.join(map(s
         , "{}.remove({})"]
 
 dictionary = {}
-
 dictionary = {k:v for k, v in zip(methodList, values)}
 
 def compareArrays(input, output, method, arg1 = None, arg2 = None):
