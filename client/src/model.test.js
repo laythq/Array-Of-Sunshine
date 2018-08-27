@@ -52,5 +52,9 @@ describe('findMethod', () => {
     it('returns push when appropriate', () => {
       expect(findMethod([1,2,3], [1,2,3,4])).toContain('.push(4)')
     });
+
+    it('returns fill when appropriate', () => {
+      expect(findMethod([1,2,3], [4,4,4])).toContain('.fill(4)')
+    })
   })
 });
