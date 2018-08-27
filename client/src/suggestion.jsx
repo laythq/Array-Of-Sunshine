@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { findMethod, processInput } from './model';
+import { findMethod } from './model';
+import { processInput } from './parser';
 
 export class CodeSuggestion extends React.Component {
 

@@ -6,7 +6,7 @@ describe('findMethod', () => {
     expect(findMethod([1, 2, 3], '1,2,3')).toContain('.join');
   });
 
-  test("it returns 'no method found' if it is unable to find a method", () => {
+  it("returns 'no method found' if it is unable to find a method", () => {
     expect(findMethod([1, 2, 3], [2342, 534534, 65464654])).toContain('No method found');
   });
 
@@ -43,7 +43,7 @@ describe('findMethod', () => {
 
     it('returns .reverse.pop when appropriate', () => {
       expect(findMethod([1,2,3], 1)).toContain('.reverse.pop')
-    })
+    });
 
     it('does not return .slice.toString when incorrect', () => {
       expect(findMethod([1,2,3], '1')).not.toContain('.slice.toString')
