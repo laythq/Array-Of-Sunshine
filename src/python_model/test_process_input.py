@@ -1,6 +1,7 @@
 from process_input import processInput, workOutType, workOutArray
 
 def test_processInput():
+    """ Tests Process Input """
     assert processInput('["a", 2, True, None, [5]]') == ['a', 2, True, None, [5]]
 
 def test_workOutType():
