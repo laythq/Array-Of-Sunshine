@@ -6,9 +6,7 @@ const bodyParser = require('body-parser')
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, '/client/public')))
-
 app.use(cors())
-
 // configure the app to use bodyParser()
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
@@ -21,6 +19,7 @@ app.get('/ping', cors(), async (req, res, next) => {
 app.post('/api/scripts', function (req, res) {
   console.log(req.body)
   console.log(req.body.language)
+  var language = req.body.language
   res.send(language)
 });
 
