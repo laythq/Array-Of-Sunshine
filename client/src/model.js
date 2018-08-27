@@ -29,7 +29,7 @@ function findZeroArgumentMethods(inputArray, desiredOutput) {
   const outputArray = [];
   zeroArgumentMethods.forEach((firstMethod) => {
     if (compareArrays(deepCopy(inputArray), desiredOutput, firstMethod)) {
-      outputArray.push(`.${firstMethod.name}`);
+      outputArray.push(`${firstMethod.name}`);
     }
     const inputAfterFirstMethod = firstMethod.call(deepCopy(inputArray));
     if (!Array.isArray(inputAfterFirstMethod)) {
@@ -37,17 +37,22 @@ function findZeroArgumentMethods(inputArray, desiredOutput) {
     }
     zeroArgumentMethods.forEach((secondMethod) => {
       if (compareArrays(deepCopy(inputAfterFirstMethod), desiredOutput, secondMethod)) {
-        outputArray.push(`.${firstMethod.name}.${secondMethod.name}`);
+        outputArray.push(`${firstMethod.name}.${secondMethod.name}`);
       }
     });
   });
   return outputArray;
 }
 
+function uniqueValues(array) {
+  return array.filter((v, i, a) => a.indexOf(v) === i)
+}
+
 function findDifferences(array1, array2) {
-  const inA = array1.filter(x => !array2.includes(x));
-  const inB = array2.filter(y => !array1.includes(y));
-  return inA.concat(inB);
+  const differences = []
+    .concat(array1.filter(x => !array2.includes(x)))
+    .concat(array2.filter(y => !array1.includes(y)));
+  return uniqueValues(differences);
 }
 
 function suggestArguments(inputArray, desiredOutput) {
@@ -65,7 +70,7 @@ function findOneArgumentMethods(inputArray, desiredOutput) {
   oneArgumentMethods.forEach((method) => {
     args.forEach((argument) => {
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
-        outputArray.push(`.${method.name}(${JSON.stringify(argument)})`);
+        outputArray.push(`${method.name}(${JSON.stringify(argument)})`);
       }
     });
   });
