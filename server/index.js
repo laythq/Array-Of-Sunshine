@@ -31,18 +31,7 @@ app.post('/api/scripts', function (req, res) {
       return res.send(stdout)
     })
   }
-  // res.json(language)
 });
-
-app.get('/python', function(req, res) {
-  console.log('python route called')
-  const exec = require('child_process').exec
-  const input = 'processed_input'
-  const output = 'processed_output'
-  exec(`python ./server/src/script.py ${input} ${output}`, function (error, stdout, stderr) {
-    return res.send(stdout)
-  })
-})
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('CORS-enabled web server listening on port 8080 | HELLO SALLY!')
