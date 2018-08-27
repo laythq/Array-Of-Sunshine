@@ -67,6 +67,7 @@ export class Summary extends React.Component {
           <CodeSuggestion
             input={this.state.input}
             output={this.state.output}
+            language={this.state.language}
             suggestion={this.state.suggestion}
           />
         </div>

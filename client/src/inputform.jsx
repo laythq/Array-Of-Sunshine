@@ -32,8 +32,8 @@ export class InputForm extends React.Component {
     };
     axios.post('/api/scripts', userInput)
     .then( (res) => {
-      this.props.setSuggestion(res.data);
       this.props.logSuggestion(this.state.input, this.state.output, res.data)
+      this.props.setSuggestion(res.data);
     })
     .catch(error => console.error('Error:', error));
     // .then(res => this.props.logSuggestion(this.state.input, this.state.output, res.data))
