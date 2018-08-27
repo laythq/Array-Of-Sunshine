@@ -1,13 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { findMethod, processInput } from './model';
-
+import { processInput } from './model';
 
 export class CodeSuggestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: null,
+      suggestion: null,
     };
   }
 
@@ -18,30 +17,28 @@ export class CodeSuggestion extends React.Component {
       language: this.props.language
     };
     axios.post('/api/scripts', userInput)
-    .then(res => console.log('Success:', res.data))
+    .then(res => this.setState({
+        suggestion: res.data
+      }))
     .catch(error => console.error('Error:', error));
   }
-
-    // previous code:
-    // const processedInput = processInput(this.props.input);
-    // const processedOutput = processInput(this.props.output);
-    // return findMethod(processedInput, processedOutput);
 
   render() {
     if (!this.props.input) {
       return null;
     }
-    this.getCodeSuggestion();
-    this.props.logSuggestion(this.props.input, this.props.output, this.state.text);
+    console.log(this.state.suggestion)
+    this.props.logSuggestion(this.props.input, this.props.output, this.state.suggestion);
     return (
       <div>
         {this.props.input}
           >
         {this.props.output}
           =
-        {this.state.text}
+        {this.state.suggestion}
       </div>
     );
+
   }
 }
 

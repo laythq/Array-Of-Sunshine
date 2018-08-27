@@ -18,11 +18,11 @@ app.get('/ping', cors(), async (req, res, next) => {
 
 app.post('/api/scripts', function (req, res) {
   console.log(req.body)
-  var language = req.body.language
+  const input = req.body.input
+  const output = req.body.output
+  const language = req.body.language
   if(language === 'ruby'){
     const exec = require('child_process').exec
-    const input = 'processed_input'
-    const output = 'processed_output'
     exec(`ruby ./server/src/script.rb ${input} ${output}`, function (error, stdout, stderr) {
       return res.send(stdout)
     })
