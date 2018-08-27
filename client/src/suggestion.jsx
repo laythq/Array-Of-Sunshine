@@ -1,6 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import { findMethod, processInput } from './model';
-const bodyParser = require('body-parser')
+
 
 export class CodeSuggestion extends React.Component {
   constructor(props) {
@@ -21,13 +22,8 @@ export class CodeSuggestion extends React.Component {
     let userInputJSON = JSON.stringify(userInput);
     console.log(userInputJSON)
 
-    fetch('/api/scripts', {
-      method: 'POST',
-      // headers: {
-      //   'content-type': 'application/json',
-      // },
-      body: 'hello',
-    }).then(res => res.json())
+    axios.post('/api/scripts', userInput)
+    .then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error:', error));
 
