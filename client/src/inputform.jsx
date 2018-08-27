@@ -38,7 +38,6 @@ export class InputForm extends React.Component {
     .catch(error => console.error('Error:', error));
     // .then(res => this.props.logSuggestion(this.state.input, this.state.output, res.data))
     // .catch(error => console.error('Error:', error));
-
   }
 
   render() {
