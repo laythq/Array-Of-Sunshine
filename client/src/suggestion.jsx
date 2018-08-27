@@ -1,5 +1,6 @@
 import React from 'react';
 import { findMethod, processInput } from './model';
+const bodyParser = require('body-parser')
 
 export class CodeSuggestion extends React.Component {
   constructor(props) {
@@ -16,15 +17,16 @@ export class CodeSuggestion extends React.Component {
       language: this.props.language
     };
     console.log(userInput)
+
     let userInputJSON = JSON.stringify(userInput);
     console.log(userInputJSON)
 
-    fetch('/scripts', {
-      method: "POST",
-      body: JSON.stringify(userInput),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    fetch('/api/scripts', {
+      method: 'POST',
+      // headers: {
+      //   'content-type': 'application/json',
+      // },
+      body: 'hello',
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error:', error));
