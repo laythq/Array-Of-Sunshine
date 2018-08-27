@@ -26,10 +26,10 @@ app.post('/api/scripts', function (req, res) {
 
 app.get('/ruby', function(req, res) {
   const exec = require('child_process').exec
-  exec('./server/src/script.rb', function (error, stdout, stderr) {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    console.log('error: ' + error);
+  const input = 'processed_input'
+  const output = 'processed_output'
+  exec(`ruby ./server/src/script.rb ${input} ${output}`, function (error, stdout, stderr) {
+    return res.send(stdout)
   })
 })
 

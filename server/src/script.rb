@@ -1,5 +1,7 @@
-def say_hi
-  puts "hello"
+def find_method(input, output)
+  puts "#{input} #{output} .reverse"
 end
 
-say_hi
+input = ARGV[0]
+output = ARGV[1]
+find_method(input, output)
