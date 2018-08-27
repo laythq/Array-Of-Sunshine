@@ -23,8 +23,7 @@ export class CodeSuggestion extends React.Component {
     console.log(userInputJSON)
 
     axios.post('/api/scripts', userInput)
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
+    .then(response => console.log('Success:', response.data))
     .catch(error => console.error('Error:', error));
 
     // basic get request:

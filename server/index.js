@@ -19,15 +19,9 @@ app.get('/ping', cors(), async (req, res, next) => {
 });
 
 app.post('/api/scripts', function (req, res) {
-  console.log('req:')
   console.log(req.body)
-  // console.log('got request ' + req.statusCode)
-  // console.log(typeof req.body)
-  // console.log(req.method)
-  // console.log(req.headers)
-  console.log(req.headers['content-type'])
-  var text = 'Please work!'
-  res.json(text)
+  console.log(req.body.language)
+  res.send(language)
 });
 
 app.get('/ruby', function(req, res) {
