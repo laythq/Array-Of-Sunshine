@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { findMethod, processInput } from './model';
 
@@ -11,13 +12,26 @@ export class CodeSuggestion extends React.Component {
   }
 
   getCodeSuggestion() {
-    fetch(`/scripts`)
-      .then(response => response.json())
-      .then(data => this.setState({text: data}))
+
+    let userInput = {
+      input: processInput(this.props.input),
+      output: processInput(this.props.output),
+      language: this.props.language
+    };
+    console.log(userInput)
+    let userInputJSON = JSON.stringify(userInput);
+    console.log(userInputJSON)
+
+    // basic get request
+    // fetch('/scripts')
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
+
+  }
+
     // const processedInput = processInput(this.props.input);
     // const processedOutput = processInput(this.props.output);
     // return findMethod(processedInput, processedOutput);
-  }
 
   render() {
     if (!this.props.input) {
