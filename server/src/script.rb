@@ -1,5 +1,5 @@
 def find_method(input, output)
-  puts "#{input} #{output} .reverse"
+  puts "THIS IS RUBY: #{input} #{output} .reverse"
 end
 
 input = ARGV[0]

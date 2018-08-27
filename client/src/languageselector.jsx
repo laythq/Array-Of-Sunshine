@@ -1,10 +1,7 @@
 import React from 'react';
 
 export class LanguageSelector extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   handleClick(language) {
     this.props.setLanguage(language)
   }

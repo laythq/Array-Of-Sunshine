@@ -26,7 +26,6 @@ app.post('/api/scripts', function (req, res) {
     exec(`ruby ./server/src/script.rb ${input} ${output}`, function (error, stdout, stderr) {
       return res.send(stdout)
     })
-  }
   // res.json(language)
 });
 

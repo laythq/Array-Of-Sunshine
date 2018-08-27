@@ -1,4 +1,6 @@
 import React from 'react';
+import { processInput } from './model';
+import axios from 'axios';
 
 export class InputForm extends React.Component {
   constructor(props) {
@@ -6,6 +8,7 @@ export class InputForm extends React.Component {
     this.state = {
       input: null,
       output: null,
+      suggestion: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +25,20 @@ export class InputForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.setInputOutput(this.state.input, this.state.output);
+    let userInput = {
+      input: processInput(this.state.input),
+      output: processInput(this.state.output),
+      language: this.props.language
+    };
+    axios.post('/api/scripts', userInput)
+    .then( (res) => {
+      this.props.setSuggestion(res.data);
+      this.props.logSuggestion(this.state.input, this.state.output, res.data)
+    })
+    .catch(error => console.error('Error:', error));
+    // .then(res => this.props.logSuggestion(this.state.input, this.state.output, res.data))
+    // .catch(error => console.error('Error:', error));
+
   }
 
   render() {

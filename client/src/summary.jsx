@@ -11,11 +11,13 @@ export class Summary extends React.Component {
       input: null,
       output: null,
       language: null,
+      suggestion: '',
       history: [],
     };
 
     this.setInputOutput = this.setInputOutput.bind(this);
     this.setLanguage = this.setLanguage.bind(this);
+    this.setSuggestion = this.setSuggestion.bind(this);
     this.logSuggestion = this.logSuggestion.bind(this);
   }
 
@@ -29,6 +31,12 @@ export class Summary extends React.Component {
   setLanguage(language) {
     this.setState({
       language: language
+    })
+  }
+
+  setSuggestion(suggestion) {
+    this.setState({
+      suggestion: suggestion
     })
   }
 
@@ -49,6 +57,9 @@ export class Summary extends React.Component {
             User Input:
           <InputForm
             setInputOutput={this.setInputOutput}
+            setSuggestion={this.setSuggestion}
+            logSuggestion={this.logSuggestion}
+            language={this.state.language}
           />
         </div>
         <div>
@@ -56,8 +67,7 @@ export class Summary extends React.Component {
           <CodeSuggestion
             input={this.state.input}
             output={this.state.output}
-            language={this.state.language}
-            logSuggestion={this.logSuggestion}
+            suggestion={this.state.suggestion}
           />
         </div>
         <div>
