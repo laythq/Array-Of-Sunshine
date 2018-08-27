@@ -1,7 +1,7 @@
 [
-  "test_find_method.py::test_methods", 
-  "test_find_method.py::test_methodList", 
   "test_find_method.py::test_process", 
+  "test_method_list.py::test_methods", 
+  "test_method_list.py::test_methodList", 
   "test_process_input.py::test_processInput", 
   "test_process_input.py::test_workOutType", 
   "test_process_input.py::test_workOutArray"
