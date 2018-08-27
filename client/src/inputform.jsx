@@ -1,5 +1,5 @@
 import React from 'react';
-import { processInput } from './model';
+import { processInput } from './parser';
 import axios from 'axios';
 
 export class InputForm extends React.Component {
