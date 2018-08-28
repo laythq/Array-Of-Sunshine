@@ -35,11 +35,11 @@ describe('findMethod', () => {
 
     describe('multiple methods', () => {
       it('returns .reverse.join when appropriate', () => {
-        expect(findMethod([1,2,3],'3,2,1')).toContain('reverse.join')
+        expect(findMethod([1,2,3],'3,2,1')).toContain('reverse().join')
       });
 
       it('returns .reverse.pop when appropriate', () => {
-        expect(findMethod([1,2,3], 1)).toContain('reverse.pop')
+        expect(findMethod([1,2,3], [3,2])).toContain('reverse().pop')
       });
 
       it('does not return .slice.toString when incorrect', () => {

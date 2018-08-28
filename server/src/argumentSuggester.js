@@ -28,4 +28,5 @@ function suggestArguments(inputArray, desiredOutput) {
 
 module.exports = {
   suggestArguments,
+  deepCopy,
 };
