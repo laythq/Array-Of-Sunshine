@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const returnMethods = require('./src/language_selector.js').returnMethods;
+const returnMethods = require('../server/src/language_selector.js').returnMethods;
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname + 'build')));
