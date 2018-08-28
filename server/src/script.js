@@ -1,6 +1,6 @@
 const Suggestor = require('./argumentSuggestor');
 
-const zeroArgumentMethods = [
+const methodsWithZeroArguments = [
   Array.prototype.join,
   Array.prototype.pop,
   Array.prototype.reverse,
@@ -8,7 +8,7 @@ const zeroArgumentMethods = [
   Array.prototype.toString,
 ];
 
-const oneArgumentMethods = [
+const methodsWithOneArgument = [
   Array.prototype.slice,
   Array.prototype.concat,
   Array.prototype.fill,
@@ -35,10 +35,10 @@ function testMethod(inputArray, desiredOutput, method, outputArray, prefix = '')
   return method.call(deepCopy(inputArray));
 }
 
-function findZeroArgumentMethods(inputArray, desiredOutput, outputArray, prefix = '') {
+function testMethodsWithZeroArguments(inputArray, desiredOutput, outputArray, prefix = '') {
   if (!Array.isArray(inputArray)) return {};
   const triedMethods = [];
-  zeroArgumentMethods.forEach((firstMethod) => {
+  methodsWithZeroArguments.forEach((firstMethod) => {
     triedMethods.push([
       firstMethod,
       testMethod(inputArray, desiredOutput, firstMethod, outputArray, prefix),
@@ -48,10 +48,10 @@ function findZeroArgumentMethods(inputArray, desiredOutput, outputArray, prefix 
   return triedMethods;
 }
 
-function findOneArgumentMethods(inputArray, desiredOutput, outputArray, prefix = '') {
+function testMethodsWithOneArgument(inputArray, desiredOutput, outputArray, prefix = '') {
   const triedMethods = [];
   const args = Suggestor.suggestArguments(inputArray, desiredOutput);
-  oneArgumentMethods.forEach((method) => {
+  methodsWithOneArgument.forEach((method) => {
     args.forEach((argument) => {
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
         outputArray.push(`${prefix}${method.name}(${JSON.stringify(argument)})`);
@@ -73,8 +73,8 @@ function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
     const arg = methodAndOutCome[2];
     if (!Array.isArray(array)) return;
     const prefix = `${method.name}(${arg}).`;
-    findZeroArgumentMethods(array, desiredOutput, outputArray, prefix);
-    findOneArgumentMethods(array, desiredOutput, outputArray, prefix);
+    testMethodsWithZeroArguments(array, desiredOutput, outputArray, prefix);
+    testMethodsWithOneArgument(array, desiredOutput, outputArray, prefix);
   });
 }
 
@@ -82,8 +82,8 @@ function findMethod(inputArray, desiredOutput){
   if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
   const successfulMethods = [];
   const triedMethods = [].concat(
-    findZeroArgumentMethods(inputArray, desiredOutput, successfulMethods),
-    findOneArgumentMethods(inputArray, desiredOutput, successfulMethods),
+    testMethodsWithZeroArguments(inputArray, desiredOutput, successfulMethods),
+    testMethodsWithOneArgument(inputArray, desiredOutput, successfulMethods),
   );
   if (successfulMethods.length === 0) {
     lookForChainedMethods(triedMethods, desiredOutput, successfulMethods);
