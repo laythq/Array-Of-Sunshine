@@ -59,8 +59,11 @@ function suggestArguments(inputArray, desiredOutput) {
   let suggestedArguments = [];
   // TODO split string by ',' if desiredOutput is a string.
   if (Array.isArray(inputArray) && Array.isArray(desiredOutput)) {
-    suggestedArguments = suggestedArguments.concat(findDifferences(inputArray, desiredOutput));
+    suggestedArguments = suggestedArguments
+      .concat(findDifferences(inputArray, desiredOutput));
   }
+  suggestedArguments = suggestedArguments
+    .concat(deepCopy(inputArray));
   return suggestedArguments;
 }
 

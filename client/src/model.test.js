@@ -60,5 +60,13 @@ describe('findMethod', () => {
     it('returns fill when appropriate', () => {
       expect(findMethod([1,2,3], [4,4,4])).toContain('fill(4)')
     });
+
+    it('returns indexOf when appropriate', () => {
+      expect(findMethod(['a','b','c'], 2)).toContain("indexOf(\"c\")")
+    })
+
+    it('returns indexOf when appropriate', () => {
+      expect(findMethod([1,45,60], 1)).toContain("indexOf(45)")
+    })
   })
 });
