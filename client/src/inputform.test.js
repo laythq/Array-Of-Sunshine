@@ -25,4 +25,12 @@ describe('input form component', () => {
     expect(wrapper.state().language).toEqual('python')
   })
 
+  it('sets a language when the submit button is clicked', () => {
+    const mockSetInputOutput = jest.fn();
+    const wrapper = shallow(<InputForm setInputOutput={mockSetInputOutput} />);
+    console.log(wrapper.debug())
+    wrapper.simulate('submit')
+    expect(mockSetInputOutput).toHaveBeenCalled();
+  })
+
 })

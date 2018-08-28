@@ -40,8 +40,6 @@ export class InputForm extends React.Component {
       this.props.setSuggestion(res.data);
     })
     .catch(error => console.error('Error:', error));
-    // .then(res => this.props.logSuggestion(this.state.input, this.state.output, res.data))
-    // .catch(error => console.error('Error:', error));
   }
 
   selectLanguage(language) {

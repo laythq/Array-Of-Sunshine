@@ -13,4 +13,9 @@ describe('suggestion component', () => {
        />)
     expect(wrapper.find('div').text()).toEqual('language: input > output = suggestion')
   })
+  it('returns nothing without user input', () => {
+    const wrapper = shallow(
+      <CodeSuggestion input={null}/>)
+    expect(wrapper.type()).toEqual(null)
+  })
 })
