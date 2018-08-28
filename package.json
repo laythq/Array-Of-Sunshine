@@ -16,7 +16,7 @@
     "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "coverage": "istanbul cover ./node_modules/jest/bin/jest.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "devDependencies": {
     "ajv": "^6.5.3",
