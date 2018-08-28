@@ -3,8 +3,8 @@ import { findMethod } from './script';
 
 describe('findMethod', () => {
   describe('for zero-argument methods', () => {
-    it('returns .join when required for desiredOutput', () => {
-      expect(findMethod([1, 2, 3], '1,2,3')).toContain('join');
+    it('returns .join() when required for desiredOutput', () => {
+      expect(findMethod([1, 2, 3], '1,2,3')).toContain('join()');
     });
 
     it("returns 'no method found' if it is unable to find a method", () => {
@@ -12,34 +12,34 @@ describe('findMethod', () => {
     });
 
     it('returns .pop when appropriate', () => {
-      expect(findMethod([1, 2, 3], 3)).toContain('pop');
+      expect(findMethod([1, 2, 3], 3)).toContain('pop()');
     });
 
     it('returns .reverse when appropriate', () => {
-      expect(findMethod([1, 2, 3], [3, 2, 1])).toContain('reverse');
+      expect(findMethod([1, 2, 3], [3, 2, 1])).toContain('reverse()');
     });
 
     it('returns .shift when appropriate', () => {
-      expect(findMethod([1, 2, 3], 1)).toContain('shift');
+      expect(findMethod([1, 2, 3], 1)).toContain('shift()');
     });
 
     it('returns .toString when appropriate', () => {
-      expect(findMethod([1, 2, 3], '1,2,3')).toContain('toString');
+      expect(findMethod([1, 2, 3], '1,2,3')).toContain('toString()');
     });
 
     describe ('with nested arrays', () => {
       it('returns .pop for a nested array', () => {
-        expect(findMethod([1,2,[1,2,3]], [1,2,3])).toContain('pop')
+        expect(findMethod([1,2,[1,2,3]], [1,2,3])).toContain('pop()')
       })
     });
 
     describe('multiple methods', () => {
       it('returns .reverse.join when appropriate', () => {
-        expect(findMethod([1,2,3],'3,2,1')).toContain('reverse().join')
+        expect(findMethod([1,2,3],'3,2,1')).toContain('reverse().join()')
       });
 
       it('returns .reverse.pop when appropriate', () => {
-        expect(findMethod([1,2,3], [3,2])).toContain('reverse().pop')
+        expect(findMethod([1,2,3], [3,2])).toContain('reverse().pop()')
       });
 
       it('does not return .slice.toString when incorrect', () => {

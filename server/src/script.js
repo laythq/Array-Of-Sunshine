@@ -30,7 +30,7 @@ function deepCopy(array) {
 
 function testMethod(inputArray, desiredOutput, method, outputArray, prefix = '') {
   if (compareArrays(deepCopy(inputArray), desiredOutput, method)) {
-    outputArray.push(`${prefix}${method.name}`);
+    outputArray.push(`${prefix}${method.name}()`);
   }
   return method.call(deepCopy(inputArray));
 }
