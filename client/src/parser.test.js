@@ -44,8 +44,8 @@ describe('parseString', () => {
   });
 
   it('parses a float string', () => {
-    expect(parseString("2.4")).toBe(2.4)
-  })
+    expect(parseString('2.4')).toBe(2.4);
+  });
 });
 
 describe('parseArray', () => {
@@ -54,14 +54,14 @@ describe('parseArray', () => {
   });
 
   it('parses a nested array string of integers', () => {
-    expect(JSON.stringify(parseArray('[[1,2],[2,3],[4,5]]'))).toBe(JSON.stringify([[1,2],[2,3],[4,5]]))
+    expect(JSON.stringify(parseArray('[[1, 2], [2, 3], [4, 5]]'))).toBe(JSON.stringify([[1, 2], [2, 3], [4, 5]]));
   });
 
   it('parses a nested array string of strings', () => {
-    expect(JSON.stringify(parseArray("[['a','a'],['b','b'],['c','c']]"))).toBe(JSON.stringify([['a','a'],['b','b'],['c','c']]))
+    expect(JSON.stringify(parseArray("[['a', 'a'], ['b', 'b'], ['c', 'c']]"))).toBe(JSON.stringify([['a', 'a'], ['b', 'b'], ['c', 'c']]));
   });
 
   it('parses a nested array string of mixed elements', () => {
-    expect(JSON.stringify(parseArray("[['a',2, true],[2.4,false],null]"))).toBe(JSON.stringify([['a',2, true],[2.4,false],null]))
+    expect(JSON.stringify(parseArray("[['a', 2, true], [2.4, false], null]"))).toBe(JSON.stringify([['a', 2, true], [2.4, false], null]));
   });
 });
