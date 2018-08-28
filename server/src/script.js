@@ -1,4 +1,4 @@
-const argumentSuggester = require('./argumentSuggester');
+const Suggestor = require('./argumentSuggestor');
 
 const zeroArgumentMethods = [
   Array.prototype.join,
@@ -50,7 +50,7 @@ function findZeroArgumentMethods(inputArray, desiredOutput, outputArray, prefix 
 
 function findOneArgumentMethods(inputArray, desiredOutput, outputArray, prefix = '') {
   const triedMethods = [];
-  const args = argumentSuggester.suggestArguments(inputArray, desiredOutput);
+  const args = Suggestor.suggestArguments(inputArray, desiredOutput);
   oneArgumentMethods.forEach((method) => {
     args.forEach((argument) => {
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
