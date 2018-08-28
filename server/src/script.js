@@ -91,7 +91,16 @@ function accessSpecificElement(inputArray, desiredOutput, outputArray) {
   outputArray.push(`input[${index}]`);
 }
 
-function findMethod(inputArray, desiredOutput){
+function sumAnArray(inputArray, desiredOutput, outputArray) {
+  if (inputArray.every(element => typeof element === 'number')) {
+    // console.log(deepCopy(inputArray).reduce)
+    if (deepCopy(inputArray).reduce((a, b) => a + b) === desiredOutput) {
+      outputArray.push('reduce((a, b) => a + b)');
+    }
+  }
+}
+
+function findMethod(inputArray, desiredOutput) {
   if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
   const successfulMethods = [];
   const triedMethods = [].concat(
@@ -100,6 +109,7 @@ function findMethod(inputArray, desiredOutput){
   );
   accessSpecificElement(inputArray, desiredOutput, successfulMethods);
   if (successfulMethods.length === 0) {
+    sumAnArray(inputArray, desiredOutput, successfulMethods);
     lookForChainedMethods(triedMethods, desiredOutput, successfulMethods);
   }
   return successfulMethods.length > 0 ? successfulMethods : ['No method found'];
