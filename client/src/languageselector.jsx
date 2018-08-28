@@ -1,25 +1,23 @@
 import React from 'react';
 
-export class LanguageSelector extends React.Component {
+export function LanguageSelector(props) {
 
-  handleClick(language) {
-    this.props.selectLanguage(language)
+  function handleClick(language) {
+    props.selectLanguage(language)
   }
 
-  render() {
-    return (
-      <div>
-        <button onClick={() => this.handleClick('javascript')}>
-          Javascript
-        </button>
-        <button onClick={() => this.handleClick('ruby')}>
-          Ruby
-        </button>
-        <button onClick={() => this.handleClick('python')}>
-          Python
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <button onClick={() => handleClick('javascript')}>
+        Javascript
+      </button>
+      <button onClick={() => handleClick('ruby')}>
+        Ruby
+      </button>
+      <button onClick={() => handleClick('python')}>
+        Python
+      </button>
+    </div>
+  );
+
 }
-export default LanguageSelector;
