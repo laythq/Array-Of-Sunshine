@@ -21,27 +21,41 @@ METHOD_LIST = %i[
   sort
   to_s
   uniq
-  values_at
 ].freeze
 
+# values_at
+
 def compare_arrays(array1, array2, method)
-  if array1.send(method) == array2
-    return true
-  else
-    return false
+  begin
+    if array1.send(method) == array2
+      return true
+    else
+      return false
+    end
+  rescue ArgumentError
   end
 end
 
-def find_method(input, output)
-possible_methods = []
-METHOD_LIST.each do |method|
-    dummy = input.clone
-    first_pass = dummy.send(method)
-    if first_pass.class == Array
-      possible_methods << '.' + method.to_s if compare_arrays(input, output, method)
-    end
-  end
+def ignore_exception
 
-puts 'Possible methods:'
-puts(possible_methods.map { |method| ' - ' + method.to_s })
+end
+
+def find_method(input, output)
+  solution = []
+  METHOD_LIST.each do |method|
+  dummy_input = input.clone
+    if compare_arrays(dummy_input, output, method)
+      solution << '.' + method.to_s
+    end
+end
+
+  if solution.any?
+    if solution.length == 1
+      return ' ' + solution.pop.to_s
+    else
+      return solution.each {|x| ' ' + x.to_s}
+    end
+  else
+    return 'No method found'
+  end
 end
