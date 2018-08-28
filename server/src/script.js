@@ -78,6 +78,19 @@ function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
   });
 }
 
+function accessSpecificElement(inputArray, desiredOutput, outputArray) {
+  if (!inputArray.includes(desiredOutput)) {
+    inputArray.forEach((element, i) => {
+      if (Array.isArray(element) && element.includes(desiredOutput)) {
+        outputArray.push(`input[${i}][${element.indexOf(desiredOutput)}]`);
+      }
+    });
+    return;
+  }
+  const index = inputArray.indexOf(desiredOutput);
+  outputArray.push(`input[${index}]`);
+}
+
 function findMethod(inputArray, desiredOutput){
   if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
   const successfulMethods = [];
@@ -85,6 +98,7 @@ function findMethod(inputArray, desiredOutput){
     testMethodsWithZeroArguments(inputArray, desiredOutput, successfulMethods),
     testMethodsWithOneArgument(inputArray, desiredOutput, successfulMethods),
   );
+  accessSpecificElement(inputArray, desiredOutput, successfulMethods);
   if (successfulMethods.length === 0) {
     lookForChainedMethods(triedMethods, desiredOutput, successfulMethods);
   }
