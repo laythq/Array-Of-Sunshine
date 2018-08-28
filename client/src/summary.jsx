@@ -2,7 +2,6 @@ import React from 'react';
 import { CodeSuggestion } from './suggestion';
 import { InputForm } from './inputform';
 import { History } from './history';
-import { LanguageSelector } from './languageselector';
 
 export class Summary extends React.Component {
   constructor(props) {
@@ -47,19 +46,13 @@ export class Summary extends React.Component {
   render() {
     return (
       <div>
-      <div>
-          Language Selector:
-        <LanguageSelector
-          setLanguage={this.setLanguage}
-        />
-      </div>
         <div>
             User Input:
           <InputForm
             setInputOutput={this.setInputOutput}
             setSuggestion={this.setSuggestion}
+            setLanguage={this.setLanguage}
             logSuggestion={this.logSuggestion}
-            language={this.state.language}
           />
         </div>
         <div>

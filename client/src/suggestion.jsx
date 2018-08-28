@@ -9,7 +9,7 @@ export class CodeSuggestion extends React.Component {
 
     return (
       <div>
-        {this.props.language.toUpperCase()}:
+
         {this.props.input}
            >
         {this.props.output}
