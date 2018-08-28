@@ -77,10 +77,14 @@ function findOneArgumentMethods(inputArray, desiredOutput) {
   return outputArray;
 }
 
+function areTheSame(inputArray, desiredOutput) {
+  return JSON.stringify(inputArray) === JSON.stringify(desiredOutput);
+}
+
 function findMethod(inputArray, desiredOutput) {
-  if (JSON.stringify(inputArray) === JSON.stringify(desiredOutput)) return 'Same input and output';
-  let outputArray = findZeroArgumentMethods(inputArray, desiredOutput);
-  outputArray = outputArray.concat(findOneArgumentMethods(inputArray, desiredOutput));
+  if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
+  let outputArray = findZeroArgumentMethods(inputArray, desiredOutput)
+    .concat(findOneArgumentMethods(inputArray, desiredOutput));
   return outputArray.length > 0 ? outputArray : ['No method found'];
 }
 
