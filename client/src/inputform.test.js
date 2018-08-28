@@ -1,12 +1,28 @@
 import React from 'react'
 import { InputForm } from './inputform'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 
 describe('input form component', () => {
-  it('starts with an input of null', () => {
-    const wrapper = shallow(<InputForm />)
-    console.log(wrapper)
-    const inputState = wrapper.state().input
-    expect(inputState).toBe(null)
+
+  it('sets its language to Javascript if selected in language selector child', () => {
+    const wrapper = mount(<InputForm />)
+    const javascriptButton = wrapper.find('button').at(0)
+    javascriptButton.find('button').at(0).simulate('click')
+    expect(wrapper.state().language).toEqual('javascript')
   })
+
+  it('sets its language to Ruby if selected in language selector child', () => {
+    const wrapper = mount(<InputForm />)
+    const rubyButton = wrapper.find('button').at(1)
+    rubyButton.find('button').at(0).simulate('click')
+    expect(wrapper.state().language).toEqual('ruby')
+  })
+
+  it('sets its language to Python if selected in language selector child', () => {
+    const wrapper = mount(<InputForm />)
+    const pythonButton = wrapper.find('button').at(2)
+    pythonButton.find('button').at(0).simulate('click')
+    expect(wrapper.state().language).toEqual('python')
+  })
+
 })
