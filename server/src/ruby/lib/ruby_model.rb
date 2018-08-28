@@ -1,3 +1,4 @@
+
 METHOD_LIST = %i[
   clear
   compact
@@ -62,6 +63,7 @@ end
           return "#{input}." + solution.pop.to_s + "(#{arg})"
         end
       else
+        puts 'reverse'
         return "#{input}." + solution.pop.to_s
       end
     else
