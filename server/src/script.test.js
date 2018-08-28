@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { findMethod } from './model';
+import { findMethod } from './script';
 
 describe('findMethod', () => {
   it('returns .join when required for desiredOutput', () => {
