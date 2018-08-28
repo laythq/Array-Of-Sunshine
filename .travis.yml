@@ -14,7 +14,10 @@ cache:
 
 script:
   - npm test
+<<<<<<< HEAD
   
+=======
+>>>>>>> 764f5aa699bdc8be3d6919424796259a033bce1c
 deploy:
   provider: heroku
   api_key:
