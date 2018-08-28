@@ -8,7 +8,7 @@
     "server": "node server/index.js",
     "client": "cd client && npm start",
     "test": "./node_modules/jest/bin/jest.js",
-    "heroku-postbuild": "cd client && npm install && npm run public",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "postinstall": "/usr/bin/env bundle install"
   },
   "repository": {
