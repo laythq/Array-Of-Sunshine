@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const returnMethods = require('./src/language_selector.js').returnMethods;
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '/client/public')))
+app.use(express.static(path.join(__dirname, '/client/build')))
 app.use(cors())
 // configure the app to use bodyParser()
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +25,7 @@ app.post('/api/scripts', function (req, res) {
   returnMethods(language, input, output, res)
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/../client/public/index.html'));
+  res.sendFile(path.join(__dirname+'/../client/build/index.html'));
 });
 app.listen(process.env.PORT || 8080, () => {
   console.log('CORS-enabled web server listening on port 8080 | HELLO SALLY!')
