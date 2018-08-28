@@ -36,7 +36,9 @@ describe('Features', () => {
   // Transpose
 
   // Sort
-
+  it('can sort an array', () => {
+    expect(findMethod([5,4,8,2],[2,4,5,8])).toContain('sort()')
+  });
   // Reverse
   it('returns .reverse when appropriate', () => {
     expect(findMethod([1, 2, 3,4], [4, 3, 2, 1])).toContain('reverse()');

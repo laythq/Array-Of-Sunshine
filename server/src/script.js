@@ -6,6 +6,7 @@ const methodsWithZeroArguments = [
   Array.prototype.reverse,
   Array.prototype.shift,
   Array.prototype.toString,
+  Array.prototype.sort,
 ];
 
 const methodsWithOneArgument = [
@@ -16,7 +17,6 @@ const methodsWithOneArgument = [
   Array.prototype.push,
   Array.prototype.unshift,
 ];
-
 
 function compareArrays(array1, array2, method, argument) {
   const sameReturnValue = JSON.stringify(method.call(array1, argument)) === JSON.stringify(array2);
