@@ -45,6 +45,8 @@ describe('Features', () => {
   });
 
   // Remove null values in an array
-
+  it('returns filter for null values', () => {
+    expect(findMethod(['a',null,,4,null,true],['a',4,true])).toContain('filter(e => e === 0 || e)')
+  })
   // map lol
 })

@@ -106,6 +106,13 @@ function joinAnArrayOfWords(inputArray, desiredOutput, outputArray) {
   }
 }
 
+function filterOutNullValues(inputArray, desiredOutput,outputArray) {
+  const arrayWithoutNullValues = deepCopy(inputArray).filter(e => e === 0 || e);
+  if (JSON.stringify(arrayWithoutNullValues === JSON.stringify(desiredOutput))){
+    outputArray.push('filter(e => e === 0 || e)');
+  }
+}
+
 function findMethod(inputArray, desiredOutput) {
   if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
   const successfulMethods = [];
@@ -115,6 +122,7 @@ function findMethod(inputArray, desiredOutput) {
   );
   accessSpecificElement(inputArray, desiredOutput, successfulMethods);
   if (successfulMethods.length === 0) {
+    filterOutNullValues(inputArray, desiredOutput, successfulMethods)
     joinAnArrayOfWords(inputArray, desiredOutput, successfulMethods)
     sumAnArray(inputArray, desiredOutput, successfulMethods);
     lookForChainedMethods(triedMethods, desiredOutput, successfulMethods);
