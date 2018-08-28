@@ -6,12 +6,10 @@ METHOD_LIST = %i[
   first
   flatten
   frozen?
-  hash
   inspect
   join
   last
   length
-  permutation
   pop
   product
   reverse
@@ -24,6 +22,7 @@ METHOD_LIST = %i[
 ].freeze
 
 # values_at
+# permutation
 
 def compare_arrays(array1, array2, method)
   begin
@@ -32,7 +31,7 @@ def compare_arrays(array1, array2, method)
     else
       return false
     end
-  rescue ArgumentError
+  rescue StandardError
   end
 end
 
