@@ -9,12 +9,7 @@ export class CodeSuggestion extends React.Component {
 
     return (
       <div>
-
-        {this.props.input}
-           >
-        {this.props.output}
-           =
-        {this.props.suggestion}
+        {this.props.language}: {this.props.input} > {this.props.output} = {this.props.suggestion}
       </div>
     );
 

@@ -39,15 +39,14 @@ export class Summary extends React.Component {
     })
   }
 
-  logSuggestion(input, output, code) {
-    this.state.history.push(`${input} > ${output} = ${code}`);
+  logSuggestion(language, input, output, code) {
+    this.state.history.push(`${language}: ${input} > ${output} = ${code}`);
   }
 
   render() {
     return (
       <div>
         <div>
-            User Input:
           <InputForm
             setInputOutput={this.setInputOutput}
             setSuggestion={this.setSuggestion}
