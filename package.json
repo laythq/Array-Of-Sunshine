@@ -9,18 +9,18 @@
     "server": "node server/index.js",
     "client": "cd client && npm start",
     "test": "./node_modules/jest/bin/jest.js",
-    "postinstall": "/usr/bin/env bundle install",
+    "postinstall": "/usr/bin/env bundle install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laythq/array_of_sunshine.git"
+    "url": "git+https://github.com/bibicollins/array_of_sunshine.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/laythq/array_of_sunshine/issues"
+    "url": "https://github.com/bibicollins/array_of_sunshine/issues"
   },
-  "homepage": "https://github.com/laythq/array_of_sunshine#readme",
+  "homepage": "https://github.com/bibicollins/array_of_sunshine#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
