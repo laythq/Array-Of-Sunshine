@@ -63,10 +63,14 @@ describe('findMethod', () => {
 
     it('returns indexOf when appropriate', () => {
       expect(findMethod(['a','b','c'], 2)).toContain("indexOf(\"c\")")
-    })
+    });
 
     it('returns indexOf when appropriate', () => {
       expect(findMethod([1,45,60], 1)).toContain("indexOf(45)")
+    })
+
+    it.only('returns slice when appropriate', () => {
+      expect(findMethod([11,12,13,14,15], [13,14,15])).toContain("slice(2)")
     })
   })
 });

@@ -1,36 +1,97 @@
-const methodList = [
+const zeroArgumentMethods = [
   Array.prototype.join,
   Array.prototype.pop,
   Array.prototype.reverse,
   Array.prototype.shift,
-  Array.prototype.slice,
   Array.prototype.toString,
 ];
 
-module.exports = {
-  findMethod: function(inputArray, desiredOutput) {
-    const outputArray = [];
-    methodList.forEach((firstMethod) => {
-      if (compareArrays(deepCopy(inputArray), desiredOutput, firstMethod)) {
-        outputArray.push(`.${firstMethod.name}`);
-      }
-      const inputAfterFirstMethod = firstMethod.call(deepCopy(inputArray));
-      if (!Array.isArray(inputAfterFirstMethod)) { return; }
-      methodList.forEach((secondMethod) => {
-        if (compareArrays(deepCopy(inputAfterFirstMethod), desiredOutput, secondMethod)) {
-          outputArray.push(`.${firstMethod.name}.${secondMethod.name}`);
-        }
-      });
-    });
+const oneArgumentMethods = [
+  Array.prototype.slice,
+  Array.prototype.concat,
+  Array.prototype.fill,
+  Array.prototype.indexOf,
+  Array.prototype.push,
+  Array.prototype.unshift,
+];
 
-    return outputArray.length > 0 ? outputArray : ['No method found'];
-  }
-};
-
-function compareArrays(array1, array2, method) {
-  return JSON.stringify(method.call(array1)) === JSON.stringify(array2);
+function compareArrays(array1, array2, method, argument) {
+  const sameReturnValue = JSON.stringify(method.call(array1, argument)) === JSON.stringify(array2);
+  const changedArrayTest = (JSON.stringify(array1) === JSON.stringify(array2));
+  return (sameReturnValue || changedArrayTest);
 }
 
 function deepCopy(array) {
   return JSON.parse(JSON.stringify(array));
 }
+
+function findZeroArgumentMethods(inputArray, desiredOutput) {
+  const outputArray = [];
+  zeroArgumentMethods.forEach((firstMethod) => {
+    if (compareArrays(deepCopy(inputArray), desiredOutput, firstMethod)) {
+      outputArray.push(`${firstMethod.name}`);
+    }
+    const inputAfterFirstMethod = firstMethod.call(deepCopy(inputArray));
+    if (!Array.isArray(inputAfterFirstMethod)) {
+      return;
+    }
+    zeroArgumentMethods.forEach((secondMethod) => {
+      if (compareArrays(deepCopy(inputAfterFirstMethod), desiredOutput, secondMethod)) {
+        outputArray.push(`${firstMethod.name}.${secondMethod.name}`);
+      }
+    });
+  });
+  return outputArray;
+}
+
+function uniqueValues(array) {
+  return array.filter((v, i, a) => a.indexOf(v) === i)
+}
+
+function findDifferences(array1, array2) {
+  const differences = []
+      .concat(array1.filter(x => !array2.includes(x)))
+      .concat(array2.filter(y => !array1.includes(y)));
+  return uniqueValues(differences);
+}
+
+function suggestArguments(inputArray, desiredOutput) {
+  let suggestedArguments = [];
+  if (Array.isArray(inputArray) && Array.isArray(desiredOutput)) {
+    suggestedArguments = suggestedArguments
+      .concat(findDifferences(inputArray, desiredOutput));
+  }
+  suggestedArguments = suggestedArguments
+    .concat(deepCopy(inputArray))
+    .concat(Array.from(Array(inputArray.length).keys()))
+    .concat(inputArray.length);
+  return uniqueValues(suggestedArguments);
+}
+
+function findOneArgumentMethods(inputArray, desiredOutput) {
+  const outputArray = [];
+  const args = suggestArguments(inputArray, desiredOutput);
+  oneArgumentMethods.forEach((method) => {
+    args.forEach((argument) => {
+      if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
+        outputArray.push(`${method.name}(${JSON.stringify(argument)})`);
+      }
+    });
+  });
+  return outputArray;
+}
+
+function areTheSame(inputArray, desiredOutput) {
+  return JSON.stringify(inputArray) === JSON.stringify(desiredOutput);
+}
+
+function findMethod(inputArray, desiredOutput) {
+  if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
+  let outputArray = findZeroArgumentMethods(inputArray, desiredOutput)
+    .concat(findOneArgumentMethods(inputArray, desiredOutput));
+  return outputArray.length > 0 ? outputArray : ['No method found'];
+}
+
+module.exports = {
+  findMethod,
+};
