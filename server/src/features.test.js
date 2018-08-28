@@ -30,7 +30,9 @@ describe('Features', () => {
     expect(findMethod([10,20,30,40], '10,20,30,40')).toContain('toString()')
   });
   // Merge string array to string with spaces
-
+  it('can recognise an array of words', () => {
+    expect(findMethod(['hack', 'the', 'planet!'], 'hack the planet!')).toContain("join(' ')")
+  });
   // Transpose
 
   // Sort

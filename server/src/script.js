@@ -100,6 +100,12 @@ function sumAnArray(inputArray, desiredOutput, outputArray) {
   }
 }
 
+function joinAnArrayOfWords(inputArray, desiredOutput, outputArray) {
+  if (deepCopy(inputArray).join(' ') === desiredOutput) {
+    outputArray.push("join(' ')");
+  }
+}
+
 function findMethod(inputArray, desiredOutput) {
   if (areTheSame(inputArray, desiredOutput)) return 'Same input and output';
   const successfulMethods = [];
@@ -109,6 +115,7 @@ function findMethod(inputArray, desiredOutput) {
   );
   accessSpecificElement(inputArray, desiredOutput, successfulMethods);
   if (successfulMethods.length === 0) {
+    joinAnArrayOfWords(inputArray, desiredOutput, successfulMethods)
     sumAnArray(inputArray, desiredOutput, successfulMethods);
     lookForChainedMethods(triedMethods, desiredOutput, successfulMethods);
   }
