@@ -10,6 +10,7 @@ METHOD_LIST = %i[
   join
   last
   length
+  permutation
   pop
   product
   reverse
@@ -19,40 +20,60 @@ METHOD_LIST = %i[
   sort
   to_s
   uniq
+  values_at
 ].freeze
 
-# values_at
 # permutation
 
-def compare_arrays(array1, array2, method)
+def compare_arrays(array1, array2, method, arg)
   begin
+  if arg
+    if array1.send(method, arg) == array2
+      return true
+    else
+      return false
+    end
+  else
     if array1.send(method) == array2
       return true
     else
       return false
     end
-  rescue StandardError
   end
+    rescue StandardError
+end
 end
 
-def ignore_exception
-
-end
-
-def find_method(input, output)
+def find_method(input, output, arg = nil)
   solution = []
   METHOD_LIST.each do |method|
   dummy_input = input.clone
-    if compare_arrays(dummy_input, output, method)
-      solution << '.' + method.to_s
+    if compare_arrays(dummy_input, output, method, arg)
+      solution << method
     end
 end
-
+  @input = input
   if solution.any?
     if solution.length == 1
-      return ' ' + solution.pop.to_s
+      if arg
+        if arg.class == String
+          return "#{input}." + solution.pop.to_s + "('#{arg}')"
+        else
+          return "#{input}." + solution.pop.to_s + "(#{arg})"
+        end
+      else
+        return "#{input}." + solution.pop.to_s
+      end
     else
-      return solution.each {|x| ' ' + x.to_s}
+      if arg
+        if arg.class == String
+          return solution.map {|x| "#{input}.#{x}('#{arg}')"}.join(', ')
+        else
+          return solution.map {|x| "#{input}.#{x}(#{arg})"}.join(', ')
+        end
+      else
+        return solution.map {|x| "#{input}.#{x}#{arg}"}.join(', ')
+      end
     end
   else
     return 'No method found'
