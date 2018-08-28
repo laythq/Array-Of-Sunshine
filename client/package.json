@@ -2,7 +2,6 @@
   "name": "array_of_sunshine_client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -19,6 +18,7 @@
     "eject": "react-scripts eject",
     "coverage": "istanbul cover ./node_modules/jest/bin/jest.js"
   },
+  "proxy": "http://localhost:8080",
   "devDependencies": {
     "ajv": "^6.5.3",
     "babel-core": "^6.26.3",
