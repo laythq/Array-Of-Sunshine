@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { findMethod } from './model';
+import { findMethod } from './script';
 
 describe('findMethod', () => {
   describe('for zero-argument methods', () => {
