@@ -25,7 +25,7 @@ app.post('/api/scripts', function (req, res) {
   returnMethods(language, input, output, res)
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'client/public/index.html'));
+  res.sendFile(path.join(__dirname+'/../client/public/index.html'));
 });
 app.listen(process.env.PORT || 8080, () => {
   console.log('CORS-enabled web server listening on port 8080 | HELLO SALLY!')
