@@ -1,7 +1,7 @@
-def find_method(input, output)
-  puts "THIS IS RUBY: #{input} #{output} .reverse"
-end
+require 'json'
+require_relative './ruby/lib/ruby_model.rb'
 
-input = ARGV[0]
-output = ARGV[1]
-find_method(input, output)
+input = JSON.parse(ARGV[0])
+output = JSON.parse(ARGV[1])
+
+puts JSON.generate(find_method(input, output))
