@@ -10,7 +10,10 @@ export class InputForm extends React.Component {
       input: null,
       output: null,
       suggestion: '',
-      language: null
+      language: null,
+      inputError: false,
+      outputError: false,
+      languageError: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,14 +30,42 @@ export class InputForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.setInputOutput(this.state.input, this.state.output);
-    this.props.setLanguage(this.state.language);
-    let userInput = {
-      input: processInput(this.state.input),
-      output: processInput(this.state.output),
-      language: this.state.language
-    };
-    this.getMethods(userInput)
+
+    const processedInput = processInput(this.state.input)
+    const processedOutput = processInput(this.state.output)
+
+    if(!this.isArray(processedInput)){
+      this.setInputError()
+    } else {
+
+      this.props.setInputOutput(this.state.input, this.state.output);
+      this.props.setLanguage(this.state.language);
+      let userInput = {
+        input: processedInput,
+        output: processedOutput,
+        language: this.state.language
+      };
+      this.getMethods(userInput)
+
+    }
+  }
+
+  setInputError() {
+    this.setState({
+      inputError: true
+    })
+  }
+
+  setOutputError() {
+    this.setState({
+      outputError: true
+    })
+  }
+
+  setLanguageError() {
+    this.setState({
+      languageError: true
+    })
   }
 
   getMethods(input) {
@@ -50,6 +81,10 @@ export class InputForm extends React.Component {
     this.setState({
       language: language
     })
+  }
+
+  isArray(input) {
+    return Array.isArray(input)
   }
 
   render() {
