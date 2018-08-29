@@ -11,6 +11,7 @@ export class InputForm extends React.Component {
       output: null,
       suggestion: '',
       language: null,
+      arrayError: false,
       inputError: false,
       outputError: false,
       languageError: false,
@@ -26,25 +27,22 @@ export class InputForm extends React.Component {
     this.setState({
       [name]: event.target.value,
     });
+    this.setState({
+      inputError: false
+    })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
-    const processedInput = processInput(this.state.input)
-    
-    if(!this.isAnArray(processedInput)){
-      const input = 'inputError'
-      this.setError(input)
-    } else if (this.state.language === null){
-      const input = 'languageError'
-      this.setError(input)
-    } else if (this.state.output === null) {
-      const output = 'outputError'
-      this.setError(output)
-    } else {
+    this.resetErrors()
+    if (this.state.input === null) { this.setError('inputError')}
+    else if (!this.isAnArray(processInput(this.state.input))) { this.setError('arrayError') }
+    else if (this.state.language === null){ this.setError('languageError') }
+    else if (this.state.output === null) { this.setError('outputError') }
+    else {
       this.props.setInputOutput(this.state.input, this.state.output);
       this.props.setLanguage(this.state.language);
+      const processedInput = processInput(this.state.input)
       const processedOutput = processInput(this.state.output)
       let userInput = {
         input: processedInput,
@@ -52,7 +50,6 @@ export class InputForm extends React.Component {
         language: this.state.language
       };
       this.getMethods(userInput)
-      this.resetErrors()
     }
   }
 
@@ -64,9 +61,9 @@ export class InputForm extends React.Component {
 
   resetErrors() {
     this.setState({
-      inputError: false,
       outputError: false,
       languageError: false,
+      arrayError: false
     })
   }
 
@@ -91,25 +88,20 @@ export class InputForm extends React.Component {
 
   render() {
 
-    const isInputError = this.state.inputError;
     let inputError;
-    if (isInputError) {
-      inputError = <div>Please enter an array/list eg. [1,2,3]</div>
-    }
-    const isLanguageError = this.state.languageError;
+    let arrayError;
     let languageError;
-    if (isLanguageError) {
-      languageError = <div>Please select a language</div>
-    }
-    const isOutputError = this.state.outputError;
     let outputError;
-    if (isOutputError) {
-      outputError = <div>Please enter your desired output</div>
-    }
+
+    if (this.state.inputError) {inputError = <div>Please enter an array/list eg. [1,2,3]</div>}
+    if (this.state.arrayError) {arrayError = <div>Please enter an array/list eg. [1,2,3]</div>}
+    if (this.state.languageError) {languageError = <div>Please select a language</div>}
+    if (this.state.outputError) {outputError = <div>Please enter your desired output</div>}
 
     return (
       <div>
         {inputError}
+        {arrayError}
         {languageError}
         {outputError}
         <div>
