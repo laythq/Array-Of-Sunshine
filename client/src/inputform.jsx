@@ -2,7 +2,6 @@ import React from 'react';
 import { processInput } from './parser';
 import axios from 'axios';
 import { LanguageSelector } from './languageselector';
-import { InputErrorMessage, LanguageErrorMessage } from './errormessage';
 
 export class InputForm extends React.Component {
   constructor(props) {
@@ -33,17 +32,20 @@ export class InputForm extends React.Component {
     event.preventDefault();
 
     const processedInput = processInput(this.state.input)
-    const processedOutput = processInput(this.state.output)
-
+    
     if(!this.isAnArray(processedInput)){
       const input = 'inputError'
       this.setError(input)
     } else if (this.state.language === null){
       const input = 'languageError'
       this.setError(input)
+    } else if (this.state.output === null) {
+      const output = 'outputError'
+      this.setError(output)
     } else {
       this.props.setInputOutput(this.state.input, this.state.output);
       this.props.setLanguage(this.state.language);
+      const processedOutput = processInput(this.state.output)
       let userInput = {
         input: processedInput,
         output: processedOutput,
@@ -90,21 +92,26 @@ export class InputForm extends React.Component {
   render() {
 
     const isInputError = this.state.inputError;
-    const isLanguageError = this.state.languageError;
     let inputError;
-    let languageError;
-
     if (isInputError) {
-      inputError = <InputErrorMessage />;
+      inputError = <div>Please enter an array/list eg. [1,2,3]</div>
     }
+    const isLanguageError = this.state.languageError;
+    let languageError;
     if (isLanguageError) {
-      languageError = <LanguageErrorMessage />;
+      languageError = <div>Please select a language</div>
+    }
+    const isOutputError = this.state.outputError;
+    let outputError;
+    if (isOutputError) {
+      outputError = <div>Please enter your desired output</div>
     }
 
     return (
       <div>
         {inputError}
         {languageError}
+        {outputError}
         <div>
           Language Selector:
           <LanguageSelector
