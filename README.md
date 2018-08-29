@@ -69,6 +69,10 @@ So that I can use the tool for more complex methods
 I want to be able to input other objects than arrays (multi-dimensional arrays,
 hashes, strings)
 ```
+### Test coverage (As of wed-update later)
+![Coverage report](https://imgur.com/YL6EQ6L)
+![Coverage report server](https://imgur.com/q55TFob)
+![Coverage report client](https://imgur.com/LzDgp8E)
 ### Todo
 1. Stack info
 2. Screenshot of the program in action
