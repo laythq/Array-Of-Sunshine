@@ -4,10 +4,10 @@ const argumentSuggestor = require('./argumentSuggestor.js')
 
 module.exports = {
   returnMethods: function(language, input, output, res) {
-    const arguments =  argumentSuggestor.suggestArguments(input, output)
+    // const arguments =  argumentSuggestor.suggestArguments(input, output)
     switch(language) {
       case 'ruby':
-        runRuby(input, output, arguments,res)
+        runRuby(input, output, res)
         break;
       case 'python':
         runPython(input, output, res)
@@ -22,7 +22,7 @@ module.exports = {
 };
 
 function runRuby(input, output, res) {
-  exec(`ruby ./server/src/script.rb ${input} ${output}`, function (error, stdout, stderr) {
+  exec(`ruby ./server/src/script.rb ${JSON.stringify(input)} ${JSON.stringify(output)}`, function (error, stdout, stderr) {
     return res.send(stdout)
   })
 }

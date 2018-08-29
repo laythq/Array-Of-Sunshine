@@ -1,4 +1,3 @@
-
 METHOD_LIST = %i[
   clear
   compact
@@ -47,31 +46,41 @@ end
 
 def find_method(input, output, arg = nil)
   solution = []
-  METHOD_LIST.each do |method|
-  dummy_input = input.clone
-    if compare_arrays(dummy_input, output, method, arg)
-      solution << method
+  if arg
+    arg.each {|x|
+      METHOD_LIST.each do |method|
+      dummy_input = input.clone
+        if compare_arrays(dummy_input, output, method, x)
+          solution << method
+        end
     end
+    }
+  else
+    METHOD_LIST.each do |method|
+    dummy_input = input.clone
+      if compare_arrays(dummy_input, output, method, arg)
+        solution << method
+      end
+  end
 end
   @input = input
   if solution.any?
     if solution.length == 1
       if arg
-        if arg.class == String
-          return "#{input}." + solution.pop.to_s + "('#{arg}')"
+        if arg.last.class == String
+          return "#{input}." + solution.pop.to_s + "('#{arg.last}')"
         else
-          return "#{input}." + solution.pop.to_s + "(#{arg})"
+          return "#{input}." + solution.pop.to_s + "(#{arg.last})"
         end
       else
-        puts 'reverse'
         return "#{input}." + solution.pop.to_s
       end
     else
       if arg
-        if arg.class == String
-          return solution.map {|x| "#{input}.#{x}('#{arg}')"}.join(', ')
+        if arg.last.class == String
+          return solution.map {|x| "#{input}.#{x}('#{arg.last}')"}.join(', ')
         else
-          return solution.map {|x| "#{input}.#{x}(#{arg})"}.join(', ')
+          return solution.map {|x| "#{input}.#{x}(#{arg.last})"}.join(', ')
         end
       else
         return solution.map {|x| "#{input}.#{x}#{arg}"}.join(', ')
