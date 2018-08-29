@@ -32,5 +32,8 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
+  },
+  "devDependencies": {
+    "jest-mock-axios": "^2.1.11"
   }
 }

@@ -28,14 +28,17 @@ export class InputForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.setInputOutput(this.state.input, this.state.output);
-    console.log("hello")
     this.props.setLanguage(this.state.language);
     let userInput = {
       input: processInput(this.state.input),
       output: processInput(this.state.output),
       language: this.state.language
     };
-    axios.post('/api/scripts', userInput)
+    this.getMethods(userInput)
+  }
+
+  getMethods(input) {
+    axios.post('/api/scripts', input)
     .then( (res) => {
       this.props.logSuggestion(this.state.language, this.state.input, this.state.output, res.data)
       this.props.setSuggestion(res.data);

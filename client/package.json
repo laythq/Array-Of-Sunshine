@@ -5,6 +5,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "istanbul": "^0.4.5",
@@ -33,6 +34,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.5.0",
+    "jest-mock-axios": "^2.1.11",
     "regenerator-runtime": "^0.12.1"
   }
 }

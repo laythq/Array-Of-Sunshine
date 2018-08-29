@@ -1,6 +1,6 @@
 import React from 'react'
 import { InputForm } from './inputform'
-import { mount, shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 describe('input form component', () => {
 
@@ -11,7 +11,7 @@ describe('input form component', () => {
       expect(wrapper.state('input')).toEqual('some_input')
     })
   })
-
+  
   describe('array output', () => {
     it('should respond to change event and change state of input form component', () => {
       const wrapper = shallow(<InputForm />)
@@ -41,12 +41,13 @@ describe('input form component', () => {
     })
   })
 
-  it.only('sets a language when the submit button is clicked', () => {
-    const mockSetInputOutput = jest.fn();
-    const wrapper = shallow(<InputForm setInputOutput={mockSetInputOutput} />);
-    console.log(wrapper.debug())
-    wrapper.find('button').at(0).simulate('click')
-    expect(mockSetInputOutput).toHaveBeenCalled();
-  })
+  // should this test be in Summary??
+  // it('sets the input/output when the submit button is clicked', () => {
+  //   const mockSetInputOutput = jest.fn();
+  //   const wrapper = shallow(<InputForm setInputOutput={mockSetInputOutput} />);
+  //   console.log(wrapper.debug())
+  //   wrapper.find('button').at(0).simulate('click')
+  //   expect(mockSetInputOutput).toHaveBeenCalled();
+  // })
 
 })
