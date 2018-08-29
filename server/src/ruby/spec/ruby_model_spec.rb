@@ -20,6 +20,7 @@ describe 'find_method with one argument' do
   #   expect(find_method([1, 2, 3], [[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]], [4, 5])).to eq("[1, 2, 3].product([4, 5])")
   # end
   it 'returns .rotate(argument) when appropriate' do
+
     expect(find_method([1, 2, 3], [3, 1, 2], 2)).to eq("[1, 2, 3].rotate(2)")
   end
   it 'returns .values_at(argument) when appropriate' do
