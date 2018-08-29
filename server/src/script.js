@@ -53,6 +53,7 @@ function testMethodsWithOneArgument(inputArray, desiredOutput, outputArray, pref
   const args = Suggestor.suggestArguments(inputArray, desiredOutput);
   methodsWithOneArgument.forEach((method) => {
     args.forEach((argument) => {
+      if (method === Array.prototype.slice && argument > desiredOutput.length - 1) return;
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
         outputArray.push(`${prefix}${method.name}(${JSON.stringify(argument)})`);
       } else {
@@ -75,7 +76,7 @@ function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
     const prefix = `${method.name}(${arg}).`;
     testMethodsWithZeroArguments(array, desiredOutput, outputArray, prefix);
     testMethodsWithOneArgument(array, desiredOutput, outputArray, prefix);
-    testMapMethods(array, desiredOutput, outputArray, prefix)
+    testMapMethods(array, desiredOutput, outputArray, prefix);
   });
 }
 
@@ -112,7 +113,7 @@ function joinAnArrayOfWords(inputArray, desiredOutput, outputArray) {
 
 function filterOutNullValues(inputArray, desiredOutput,outputArray) {
   const arrayWithoutNullValues = deepCopy(inputArray).filter(e => e === 0 || e);
-  if (JSON.stringify(arrayWithoutNullValues) === JSON.stringify(desiredOutput)){
+  if (JSON.stringify(arrayWithoutNullValues) === JSON.stringify(desiredOutput)) {
     outputArray.push('filter(e => e === 0 || e)');
     return [Array.prototype.filter, arrayWithoutNullValues, 'e => e === 0 || e'];
   }
