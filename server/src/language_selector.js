@@ -20,7 +20,6 @@ function runJavascript(input, output, jsRes) {
 }
 
 function returnMethods(language, input, output, res) {
-  console.log('in return methods function')
   const args = argumentSuggestor.suggestArguments(input, output);
   switch (language) {
     case 'ruby':

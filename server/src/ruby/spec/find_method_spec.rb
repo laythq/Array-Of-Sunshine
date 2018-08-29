@@ -4,7 +4,7 @@ describe 'find_method' do
   it 'returns .clear when appropriate' do
     expect(find_method([1, 2, 3], [])).to eq('[1, 2, 3].clear, [1, 2, 3].values_at')
   end
-  it 'returns .compact when appropriate' do
+  it 'returns .compactr when appropriate' do
     expect(find_method([1, 2, 3, nil], [1, 2, 3])).to eq('[1, 2, 3, nil].compact')
   end
   it 'returns .count when appropriate' do

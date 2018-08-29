@@ -2,7 +2,7 @@ require 'ruby_model'
 
 describe 'find_method with one argument' do
   it 'returns .count(argument) when appropriate' do
-    expect(find_method([1, 1, 1], 3, [1])).to eq('[1, 1, 1].count(1)')
+    expect(find_method([1, 1, 1], 3, 1)).to eq('[1, 1, 1].count(1)')
   end
   it 'returns .first(argument), .shift(argument) when appropriate' do
     expect(find_method(['a', 'b', 'a'], ['a', 'b'], 2)).to eq("[\"a\", \"b\", \"a\"].first(2), [\"a\", \"b\", \"a\"].shift(2)")
