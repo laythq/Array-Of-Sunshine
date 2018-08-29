@@ -34,14 +34,16 @@ export class InputForm extends React.Component {
       output: processInput(this.state.output),
       language: this.state.language
     };
-    axios.post('/api/scripts', userInput)
+    this.getMethods(userInput)
+  }
+
+  getMethods(input) {
+    axios.post('/api/scripts', input)
     .then( (res) => {
       this.props.logSuggestion(this.state.language, this.state.input, this.state.output, res.data)
       this.props.setSuggestion(res.data);
     })
     .catch(error => console.error('Error:', error));
-    // .then(res => this.props.logSuggestion(this.state.input, this.state.output, res.data))
-    // .catch(error => console.error('Error:', error));
   }
 
   selectLanguage(language) {
@@ -62,8 +64,8 @@ export class InputForm extends React.Component {
         <div>
           User Input:
           <form onSubmit={this.handleSubmit}>
-            <input name="input" type="text" onChange={this.handleChange} />
-            <input name="output" type="text" onChange={this.handleChange} />
+            <input id="input" name="input" type="text" onChange={this.handleChange} />
+            <input id="output" name="output" type="text" onChange={this.handleChange} />
             <input type="submit" value="Submit" />
           </form>
         </div>

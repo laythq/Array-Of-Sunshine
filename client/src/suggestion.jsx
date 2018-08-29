@@ -1,19 +1,14 @@
 import React from 'react';
 
-export class CodeSuggestion extends React.Component {
+export function CodeSuggestion(props) {
 
-  render() {
-    if (!this.props.input) {
+    if (!props.input) {
       return null;
     }
 
     return (
       <div>
-        {this.props.language}: {this.props.input} > {this.props.output} = {this.props.suggestion}
+        {props.language}: {props.input} > {props.output} = {props.suggestion}
       </div>
     );
-
-  }
 }
-
-export default CodeSuggestion;

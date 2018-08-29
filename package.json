@@ -4,7 +4,7 @@
   "description": "## 🌞 How to use 1. Clone this repo 2. Navigate to the project directory and run `npm install` (requires node to be installed) 3. Run `npm start` and navigate to `http://localhost:3000`",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/jest/bin/jest.js",
+    "test": "./node_modules/jest/bin/jest.js --coverage --verbose",
     "start": "node ./index.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
@@ -26,10 +26,16 @@
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.0",
     "cors": "^2.8.4",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
     "express": "^4.16.3",
     "jest": "^23.5.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
+  },
+  "devDependencies": {
+    "jest-mock-axios": "^2.1.11"
   }
 }
