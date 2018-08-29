@@ -45,13 +45,14 @@ describe('input form component', () => {
     })
   })
 
-  // should this test be in Summary??
-  // it('sets the input/output when the submit button is clicked', () => {
-  //   const mockSetInputOutput = jest.fn();
-  //   const wrapper = shallow(<InputForm setInputOutput={mockSetInputOutput} />);
-  //   console.log(wrapper.debug())
-  //   wrapper.find('button').at(0).simulate('click')
-  //   expect(mockSetInputOutput).toHaveBeenCalled();
-  // })
+  // note - am still working on this test
+
+  xit('sets the input/output when the submit button is clicked', () => {
+    const mockSetInputOutput = jest.fn();
+    const wrapper = shallow(<InputForm setInputOutput={mockSetInputOutput} />);
+    console.log(wrapper.debug())
+    wrapper.find('button').at(0).simulate('click')
+    expect(mockSetInputOutput).toHaveBeenCalled();
+  })
 
 })

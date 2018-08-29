@@ -3,6 +3,8 @@ import React from 'react'
 import { InputForm } from './inputform'
 import { shallow, mount } from 'enzyme'
 
+// note am still working on this test!!
+
 xdescribe('getMethods function in the Input Form component', () => {
 
   afterEach(() => {
