@@ -28,6 +28,7 @@ export class InputForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.setInputOutput(this.state.input, this.state.output);
+    console.log("hello")
     this.props.setLanguage(this.state.language);
     let userInput = {
       input: processInput(this.state.input),
@@ -60,8 +61,8 @@ export class InputForm extends React.Component {
         <div>
           User Input:
           <form onSubmit={this.handleSubmit}>
-            <input name="input" type="text" onChange={this.handleChange} />
-            <input name="output" type="text" onChange={this.handleChange} />
+            <input id="input" name="input" type="text" onChange={this.handleChange} />
+            <input id="output" name="output" type="text" onChange={this.handleChange} />
             <input type="submit" value="Submit" />
           </form>
         </div>
