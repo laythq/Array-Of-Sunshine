@@ -36,7 +36,7 @@ export class InputForm extends React.Component {
     const processedOutput = processInput(this.state.output)
 
     if(!this.isArray(processedInput)){
-      this.setInputError()
+      this.updateInputError()
     } else {
       this.props.setInputOutput(this.state.input, this.state.output);
       this.props.setLanguage(this.state.language);
@@ -46,12 +46,13 @@ export class InputForm extends React.Component {
         language: this.state.language
       };
       this.getMethods(userInput)
+      this.updateInputError()
     }
   }
 
-  setInputError() {
+  updateInputError() {
     this.setState({
-      inputError: true
+      inputError: !this.state.inputError
     })
   }
 
