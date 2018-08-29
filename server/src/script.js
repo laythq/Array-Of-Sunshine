@@ -67,7 +67,6 @@ function areTheSame(inputArray, desiredOutput) {
 }
 
 function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
-  console.log(triedMethods)
   triedMethods.forEach((methodAndOutCome) => {
     const method = methodAndOutCome[0];
     const array = methodAndOutCome[1];
@@ -116,7 +115,7 @@ function filterOutNullValues(inputArray, desiredOutput,outputArray) {
   if (JSON.stringify(arrayWithoutNullValues) === JSON.stringify(desiredOutput)){
     outputArray.push('filter(e => e === 0 || e)');
     return [Array.prototype.filter, arrayWithoutNullValues, 'e => e === 0 || e'];
-  };
+  }
   return [];
 }
 
@@ -129,7 +128,7 @@ function areBothArraysOfNumbers(inputArray, desiredOutput) {
 function testMapMethods(inputArray, desiredOutput, successfulMethods, prefix = '') {
   if (areBothArraysOfNumbers(inputArray, desiredOutput)) {
     const multiple = desiredOutput[0] / inputArray[0];
-    if (JSON.stringify(inputArray.map(x=>x*multiple)) === JSON.stringify(desiredOutput)) {
+    if (JSON.stringify(inputArray.map(x => x * multiple)) === JSON.stringify(desiredOutput)) {
       successfulMethods.push(`${prefix}map(x => x * ${multiple})`);
       return [Array.prototype.map, inputArray.map(x => x * multiple), `x => x * ${multiple}`];
     }
