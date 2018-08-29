@@ -8,11 +8,10 @@ function runRuby(input, output, args, rubyRes) {
   });
 }
 
-function runPython(input, output, pythonRes) {
-  exec(`python ./server/src/script.py ${input} ${output}`, function (error, stdout, stderr) {
-    argumentSuggestor.suggestArguments(input, output);
-    return pythonRes.send(JSON.parse(stdout));
-  });
+
+function runPython(input, output, res) {
+  exec(`python ./server/src/script.py ${JSON.stringify(input)} ${JSON.stringify(output)}`,
+    (error, stdout, stderr) => res.send(stdout));
 }
 
 function runJavascript(input, output, jsRes) {
