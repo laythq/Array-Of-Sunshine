@@ -4,21 +4,20 @@
   "description": "## 🌞 How to use 1. Clone this repo 2. Navigate to the project directory and run `npm install` (requires node to be installed) 3. Run `npm start` and navigate to `http://localhost:3000`",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently 'npm run server' 'npm run client'",
-    "server": "node server/index.js",
-    "client": "cd client && npm start",
-    "test": "./node_modules/jest/bin/jest.js"
+    "test": "./node_modules/jest/bin/jest.js",
+    "start": "node ./index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laythq/array_of_sunshine.git"
+    "url": "git+https://github.com/bibicollins/array_of_sunshine.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/laythq/array_of_sunshine/issues"
+    "url": "https://github.com/bibicollins/array_of_sunshine/issues"
   },
-  "homepage": "https://github.com/laythq/array_of_sunshine#readme",
+  "homepage": "https://bibicollins.github.io/array_of_sunshine",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
