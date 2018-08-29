@@ -1,26 +1,6 @@
-const findMethod = require('./script.js').findMethod;
 const exec = require('child_process').exec
+const findMethod = require('./script.js').findMethod;
 const argumentSuggestor = require('./argumentSuggestor.js');
-
-module.exports = {
-  returnMethods: function(language, input, output, res) {
-    console.log('in return methods function')
-    const args =  argumentSuggestor.suggestArguments(input, output);
-    switch(language) {
-      case 'ruby':
-        runRuby(input, output, args, res)
-        break;
-      case 'python':
-        runPython(input, output, res)
-        break;
-      case 'javascript':
-        runJavascript(input, output, res)
-        break;
-      default:
-        return 'Error'
-    }
-  }
-};
 
 function runRuby(input, output, args, rubyRes) {
   exec(`ruby ./server/src/script.rb ${JSON.stringify(input)} ${JSON.stringify(output)}`, function (error, stdout, stderr) {
@@ -36,5 +16,27 @@ function runPython(input, output, pythonRes) {
 }
 
 function runJavascript(input, output, jsRes) {
-  return jsRes.send(findMethod(input, output))
+  return jsRes.send(findMethod(input, output));
 }
+
+function returnMethods(language, input, output, res) {
+  console.log('in return methods function')
+  const args = argumentSuggestor.suggestArguments(input, output);
+  switch (language) {
+    case 'ruby':
+      runRuby(input, output, args, res)
+      break;
+    case 'python':
+      runPython(input, output, res)
+      break;
+    case 'javascript':
+      runJavascript(input, output, res)
+      break;
+    default:
+      res.send('LANGUAGE NOT FOUND');
+  }
+}
+
+module.exports = {
+  returnMethods,
+};

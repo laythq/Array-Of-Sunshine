@@ -1,12 +1,12 @@
-const express = require('express')
-const app = express()
-const path = require('path')
-const cors = require('cors')
-const bodyParser = require('body-parser')
+const express = require('express');
+const app = express();
+const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const returnMethods = require('./src/language_selector.js').returnMethods;
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '/client/public')))
+app.use(express.static(path.join(__dirname, '/client/public')));
 app.use(cors())
 // configure the app to use bodyParser()
 app.use(bodyParser.urlencoded({ extended: true }));
