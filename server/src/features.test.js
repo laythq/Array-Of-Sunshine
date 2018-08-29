@@ -3,9 +3,6 @@ import { findMethod } from './script';
 
 describe('Features', () => {
   // Reducing and rearranging
-  // it('can return slice(x).unshift(y)', () => {
-  //
-  // })
 
   // Access elements in an array.
   it('can access elements in an array', () => {
@@ -19,8 +16,6 @@ describe('Features', () => {
   it('can add multiple elements at once', () => {
     expect(findMethod([1,2,3],[1,2,3,4,5,6])).toContain('concat([4,5,6])')
   });
-  // Rearranging?
-
   // Sum an array
   it('can sum an array', () => {
     expect(findMethod([10,20,30,40],100)).toContain('reduce((a, b) => a + b)')
@@ -33,7 +28,6 @@ describe('Features', () => {
   it('can recognise an array of words', () => {
     expect(findMethod(['hack', 'the', 'planet!'], 'hack the planet!')).toContain("join(' ')")
   });
-  // Transpose
 
   // Sort
   it('can sort an array', () => {
@@ -49,4 +43,9 @@ describe('Features', () => {
     expect(findMethod(['a',null,,4,null,true],['a',4,true])).toContain('filter(e => e === 0 || e)')
   })
   // map lol
+  // multiply (divide)
+  it('returns map for multiplication', () => {
+    expect(findMethod([1,2,3],[13,26,39])).toContain('map(x => x * 13)')
+  })
+  // string => upcase
 })

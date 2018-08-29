@@ -67,6 +67,7 @@ function areTheSame(inputArray, desiredOutput) {
 }
 
 function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
+  console.log(triedMethods)
   triedMethods.forEach((methodAndOutCome) => {
     const method = methodAndOutCome[0];
     const array = methodAndOutCome[1];
@@ -75,6 +76,7 @@ function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
     const prefix = `${method.name}(${arg}).`;
     testMethodsWithZeroArguments(array, desiredOutput, outputArray, prefix);
     testMethodsWithOneArgument(array, desiredOutput, outputArray, prefix);
+    testMapMethods(array, desiredOutput, outputArray, prefix)
   });
 }
 
@@ -91,9 +93,12 @@ function accessSpecificElement(inputArray, desiredOutput, outputArray) {
   outputArray.push(`input[${index}]`);
 }
 
+function isANumber(element) {
+  return typeof element === 'number';
+}
+
 function sumAnArray(inputArray, desiredOutput, outputArray) {
-  if (inputArray.every(element => typeof element === 'number')) {
-    // console.log(deepCopy(inputArray).reduce)
+  if (inputArray.every(isANumber)) {
     if (deepCopy(inputArray).reduce((a, b) => a + b) === desiredOutput) {
       outputArray.push('reduce((a, b) => a + b)');
     }
@@ -110,8 +115,26 @@ function filterOutNullValues(inputArray, desiredOutput,outputArray) {
   const arrayWithoutNullValues = deepCopy(inputArray).filter(e => e === 0 || e);
   if (JSON.stringify(arrayWithoutNullValues) === JSON.stringify(desiredOutput)){
     outputArray.push('filter(e => e === 0 || e)');
+    return [Array.prototype.filter, arrayWithoutNullValues, 'e => e === 0 || e'];
+  };
+  return [];
+}
+
+function areBothArraysOfNumbers(inputArray, desiredOutput) {
+  return Array.isArray(desiredOutput)
+      && inputArray.every(isANumber)
+      && desiredOutput.every(isANumber);
+}
+
+function testMapMethods(inputArray, desiredOutput, successfulMethods, prefix = '') {
+  if (areBothArraysOfNumbers(inputArray, desiredOutput)) {
+    const multiple = desiredOutput[0] / inputArray[0];
+    if (JSON.stringify(inputArray.map(x=>x*multiple)) === JSON.stringify(desiredOutput)) {
+      successfulMethods.push(`${prefix}map(x => x * ${multiple})`);
+      return [Array.prototype.map, inputArray.map(x => x * multiple), `x => x * ${multiple}`];
+    }
   }
-  return [Array.prototype.filter, arrayWithoutNullValues, 'filter(e => e === 0 || e)'];
+  return [];
 }
 
 function findMethod(inputArray, desiredOutput) {
@@ -121,6 +144,7 @@ function findMethod(inputArray, desiredOutput) {
     testMethodsWithZeroArguments(inputArray, desiredOutput, successfulMethods),
     testMethodsWithOneArgument(inputArray, desiredOutput, successfulMethods),
     filterOutNullValues(inputArray, desiredOutput, successfulMethods),
+    testMapMethods(inputArray, desiredOutput, successfulMethods),
   );
   accessSpecificElement(inputArray, desiredOutput, successfulMethods);
   if (successfulMethods.length === 0) {
