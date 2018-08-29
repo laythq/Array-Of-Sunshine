@@ -1,14 +1,16 @@
 # 🌞🌞 Array of Sunshine 🌞🌞
+## Insert gif of demo video here
 
 ## 🌞 How to use
-
+Locally:
 ```
 $ git clone https://github.com/bibicollins/array_of_sunshine.git
 $ cd array_of_sunshine
 $ npm install (requires node to be installed)
 $ npm start (web app will open in the browser at localhost:3000)
 ```
-
+Or:
+This app is deployed using heroku on [heroku link](https://arraynged.herokuapp.com/)
 ### 🌞 Our objectives as a team
 
 **1. Our project has a compelling technical aspect
