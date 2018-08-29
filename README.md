@@ -10,7 +10,7 @@ $ npm install (requires node to be installed)
 $ npm start (web app will open in the browser at localhost:3000)
 ```
 Or:
-This app is deployed using heroku on [heroku link](https://arraynged.herokuapp.com/)
+This app is deployed using heroku on (https://arraynged.herokuapp.com/)
 ### 🌞 Our objectives as a team
 
 **1. Our project has a compelling technical aspect
