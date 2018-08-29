@@ -1,7 +1,9 @@
-# puts 'runni'
+require 'json'
+require 'pry'
 
-input = ARGV[0]
-output = ARGV[1]
+
+input = JSON.parse(ARGV[0])
+output = JSON.parse(ARGV[1])
 
 METHOD_LIST = %i[
   clear
@@ -86,4 +88,4 @@ end
   end
 end
 
-find_method(input, output)
+puts JSON.generate(find_method(input, output))
