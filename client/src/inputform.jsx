@@ -46,13 +46,21 @@ export class InputForm extends React.Component {
         language: this.state.language
       };
       this.getMethods(userInput)
-      this.updateInputError()
+      this.resetErrors()
     }
   }
 
   updateInputError() {
     this.setState({
       inputError: !this.state.inputError
+    })
+  }
+
+  resetErrors() {
+    this.setState({
+      inputError: false,
+      outputError: false,
+      languageError: false,
     })
   }
 
