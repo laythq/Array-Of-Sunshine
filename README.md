@@ -70,7 +70,7 @@ I want to be able to input other objects than arrays (multi-dimensional arrays,
 hashes, strings)
 ```
 ### Test coverage (As of wed-update later)
-![Coverage report](https://imgur.com/a/RE612YL)
+![Coverage report](https://imgur.com/zjWEMoc)
 
 ### Todo
 1. Stack info
