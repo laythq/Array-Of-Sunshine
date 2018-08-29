@@ -26,14 +26,10 @@ function runRuby(input, output, res) {
 }
 
 function runPython(input, output, res) {
-  exec(`python ./server/src/script.py ${input} ${output}`,
-    function (error, stdout, stderr) {
-    console.log(input, output)
-    console.log(stdout)
-    return res.send(stdout)
-  })
+  exec(`python ./server/src/script.py ${JSON.stringify(input)} ${JSON.stringify(output)}`,
+    (error, stdout, stderr) => res.send(stdout));
 }
 
 function runJavascript(input, output, res) {
-  return res.send(findMethod(input, output))
+  return res.send(findMethod(input, output));
 }

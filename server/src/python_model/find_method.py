@@ -26,7 +26,6 @@ def findMethod(inp, outp, arg1, arg2):
 
 def process(inp, outp, arg1 = None, arg2 = None):
     if findMethod(inp, outp, arg1, arg2) == None:
-        print 'No method found.'
-        # return methodList
+        return methodList
     else:
         return findMethod(inp, outp, arg1, arg2)
