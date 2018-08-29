@@ -8,6 +8,8 @@
 /coverage
 /client/coverage
 
+#process
+/client/build
 
 # misc
 .DS_Store
