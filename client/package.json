@@ -1,0 +1,40 @@
+{
+  "name": "array_of_sunshine_client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-preset-env": "^1.7.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
+    "istanbul": "^0.4.5",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom --coverage",
+    "eject": "react-scripts eject",
+    "coverage": "istanbul cover ./node_modules/jest/bin/jest.js"
+  },
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "ajv": "^6.5.3",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.5.0",
+    "jest-mock-axios": "^2.1.11",
+    "regenerator-runtime": "^0.12.1"
+  }
+}

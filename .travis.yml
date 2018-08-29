@@ -10,6 +10,17 @@ node_js:
 cache:
   directories:
     - node_modules
+    - client/node_modules
 
 script:
   - npm test
+  
+deploy:
+  provider: heroku
+  api_key:
+    secure: 1917c827-5ade-44a4-8fa5-e872874e5c48
+  app: array_of_sunshine
+    on:
+      repo: bibicollins/array_of_sunshine
+      run: - "npm install"
+           - "npm start"

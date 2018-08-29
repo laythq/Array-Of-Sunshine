@@ -1,14 +1,14 @@
 import React from 'react';
 import { Summary } from './summary';
 
-class App extends React.Component {
-  render() {
+export function App(props) {
+
     return (
       <div>
         <Summary />
       </div>
     );
-  }
+
 }
 
 export default App;
