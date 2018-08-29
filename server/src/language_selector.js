@@ -26,7 +26,10 @@ function runRuby(input, output, res) {
 }
 
 function runPython(input, output, res) {
-  exec(`python ./server/src/script.py ${input} ${output}`, function (error, stdout, stderr) {
+  exec(`python ./server/src/script.py ${input} ${output}`,
+    function (error, stdout, stderr) {
+    console.log(input, output)
+    console.log(stdout)
     return res.send(stdout)
   })
 }
