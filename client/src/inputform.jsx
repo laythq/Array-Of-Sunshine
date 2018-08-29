@@ -2,6 +2,7 @@ import React from 'react';
 import { processInput } from './parser';
 import axios from 'axios';
 import { LanguageSelector } from './languageselector';
+import { InputErrorMessage } from './errormessage';
 
 export class InputForm extends React.Component {
   constructor(props) {
@@ -37,7 +38,6 @@ export class InputForm extends React.Component {
     if(!this.isArray(processedInput)){
       this.setInputError()
     } else {
-
       this.props.setInputOutput(this.state.input, this.state.output);
       this.props.setLanguage(this.state.language);
       let userInput = {
@@ -46,25 +46,12 @@ export class InputForm extends React.Component {
         language: this.state.language
       };
       this.getMethods(userInput)
-
     }
   }
 
   setInputError() {
     this.setState({
       inputError: true
-    })
-  }
-
-  setOutputError() {
-    this.setState({
-      outputError: true
-    })
-  }
-
-  setLanguageError() {
-    this.setState({
-      languageError: true
     })
   }
 
@@ -88,8 +75,17 @@ export class InputForm extends React.Component {
   }
 
   render() {
+
+    const isInputError = this.state.inputError;
+    let error;
+
+    if (isInputError) {
+      error = <InputErrorMessage />;
+    }
+
     return (
       <div>
+        {error}
         <div>
           Language Selector:
           <LanguageSelector
