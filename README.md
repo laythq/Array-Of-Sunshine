@@ -70,7 +70,12 @@ I want to be able to input other objects than arrays (multi-dimensional arrays,
 hashes, strings)
 ```
 ### Test coverage (As of wed-update later)
+To see the full coverage report in your browser run:
+`$ open coverage/lcov-report/index.html`
+
 ![Coverage report](https://imgur.com/zjWEMoc.png)
+![Coverage report client](https://imgur.com/jkZkOL9.png)
+![Coverage report server](https://imgur.com/kWLpSZq.png)
 
 ### Todo
 1. Stack info
