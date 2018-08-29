@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/bibicollins/array_of_sunshine/issues"
   },
-  "homepage": ".",
+  "homepage": "https://github.com/bibicollins/array_of_sunshine",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
