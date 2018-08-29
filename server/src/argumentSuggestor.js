@@ -16,8 +16,10 @@ function findDifferences(array1, array2) {
 function suggestArguments(inputArray, desiredOutput) {
   let suggestedArguments = [];
   if (Array.isArray(inputArray) && Array.isArray(desiredOutput)) {
+    const differences = findDifferences(inputArray, desiredOutput);
+    suggestedArguments.push(differences)
     suggestedArguments = suggestedArguments
-      .concat(findDifferences(inputArray, desiredOutput));
+      .concat(differences);
   }
   suggestedArguments = suggestedArguments
     .concat(deepCopy(inputArray))
