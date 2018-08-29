@@ -11,7 +11,7 @@ describe('input form component', () => {
       expect(wrapper.state('input')).toEqual('some_input')
     })
   })
-  
+
   describe('array output', () => {
     it('should respond to change event and change state of input form component', () => {
       const wrapper = shallow(<InputForm />)
