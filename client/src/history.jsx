@@ -1,16 +1,15 @@
 import React from 'react';
 
-export class History extends React.Component {
-  generateHistory() {
-    const items = this.props.history.map(item => item.slice());
+export function History(props) {
+
+  function generateHistory() {
+    const items = props.history.map(item => item.slice());
     return items.reverse().map((item, index) => <div key={index}>{item}</div>);
   }
 
-  render() {
-    const list = this.generateHistory();
-    return (
-      <div>{list}</div>
-    );
-  }
+  const list = generateHistory();
+
+  return (
+    <div>{list}</div>
+  );
 }
-export default History;
