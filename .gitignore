@@ -25,3 +25,5 @@ yarn-error.log*
 
 # other(notes)
 /client/src/tests.md
+
+*.pyc
