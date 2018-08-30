@@ -1,13 +1,20 @@
+@font-face {
+  font-family: "keep-calm";
+  src: url(./fonts/KeepCalm-Medium.ttf)
+}
+
+
 #header {
+  font-family: "keep-calm";
   background-color: #253452;
   color: white;
-  letter-spacing: 1.5px;
+  letter-spacing: 10px;
   border-bottom: #48B7F8 solid 1px;
 }
 
 #header_title {
-  padding: 10px;
-  font-size: 40px;
+  padding: 30px;
+  font-size: 60px;
   font-weight: bold;
 }
 
