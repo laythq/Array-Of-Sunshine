@@ -75,8 +75,9 @@ export class InputForm extends React.Component {
   getMethods(input) {
     axios.post('/api/scripts', input)
     .then( (res) => {
-      this.props.logSuggestion(this.state.language, this.state.input, this.state.output, res.data)
-      this.props.setSuggestion(res.data);
+      let formattedSuggestions = this.props.formatSuggestion(res.data)
+      this.props.logSuggestion(this.state.language, this.state.input, this.state.output, formattedSuggestions)
+      this.props.setSuggestion(formattedSuggestions);
     })
     .catch(error => console.error('Error:', error));
   }

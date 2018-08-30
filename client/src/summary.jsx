@@ -41,7 +41,20 @@ export class Summary extends React.Component {
   }
 
   logSuggestion(language, input, output, code) {
-    this.state.history.push(`${language}: ${input} > ${output} = ${code}`);
+    this.state.history.push(
+      <div>
+        <div id="chosen-language">{language}</div>
+        <div id="previous-input">{input}</div>
+        <div id="previous-output">{output}</div>
+        {code}
+      </div>
+    );
+  }
+
+  formatSuggestion(array) {
+    let suggestions = []
+    if(Array.isArray(array)){ array.forEach( suggestion => suggestions.push(<div id="suggestion">{suggestion}</div> ))}
+    return suggestions
   }
 
   render() {
@@ -53,6 +66,7 @@ export class Summary extends React.Component {
             setSuggestion={this.setSuggestion}
             setLanguage={this.setLanguage}
             logSuggestion={this.logSuggestion}
+            formatSuggestion={this.formatSuggestion}
           />
         </div>
         <div>

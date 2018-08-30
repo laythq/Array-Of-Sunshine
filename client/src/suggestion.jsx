@@ -7,12 +7,6 @@ export function CodeSuggestion(props) {
       return null;
     }
 
-    function formatSuggestion(array) {
-      let suggestions = []
-      if(Array.isArray(array)){ array.forEach( suggestion => suggestions.push(<div id="suggestion">{suggestion}</div> ))}
-      return suggestions
-    }
-
     return (
       <div>
       Methods:
@@ -27,7 +21,7 @@ export function CodeSuggestion(props) {
             {props.output}
           </div>
           <div id="suggestions">
-            {formatSuggestion(props.suggestion)}
+            {props.suggestion}
           </div>
         </div>
       </div>
