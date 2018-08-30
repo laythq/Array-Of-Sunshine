@@ -10,7 +10,7 @@ export function CodeSuggestion(props) {
     return (
       <div id="suggestion-section">
         <div id="title">
-          Methods
+          Methods / Functions
         </div>
         <div id="code-suggestion">
           <div id="chosen-language">
@@ -19,11 +19,14 @@ export function CodeSuggestion(props) {
           <div id="previous-input">
             {props.input}
           </div>
+          <div id="arrow">></div>
           <div id="previous-output">
             {props.output}
           </div>
-          <div id="suggestions">
-            {props.suggestion}
+          <div id="second-line">
+            <div id="suggestions">
+              {props.suggestion}
+            </div>
           </div>
         </div>
       </div>

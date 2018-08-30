@@ -5,6 +5,9 @@
 
 
 #header {
+  top: 0;
+  position: fixed;
+  width: 100%;
   font-family: "keep-calm";
   background-color: #253452;
   color: white;
@@ -13,8 +16,8 @@
 }
 
 #header_title {
-  padding: 30px;
-  font-size: 60px;
+  padding: 20px;
+  font-size: 55px;
   font-weight: bold;
 }
 

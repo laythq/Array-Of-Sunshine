@@ -18,7 +18,7 @@ export function History(props) {
   return (
     <div id="history-section">
       <div id="title">
-        History
+        Search History
         {props.history}
       </div>
     </div>

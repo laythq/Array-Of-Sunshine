@@ -48,8 +48,7 @@ export class Summary extends React.Component {
         <div id="arrow">></div>
         <div id="previous-output">{output}</div>
         <div id="second-line">
-        <div id="arrow">=></div>
-        {code}
+          <div id="suggestions">{code}</div>
         </div>
       </div>
     );
