@@ -2,7 +2,7 @@ require 'ruby_model'
 
 describe 'find_method' do
   it 'returns .clear when appropriate' do
-    expect(find_method([1, 2, 3], [])).to include('.clear', '.values_at')
+    expect(find_method([1, 2, 3], [])).to include('.clear')
   end
   it 'returns .compact when appropriate' do
     expect(find_method([1, 2, 3, nil], [1, 2, 3])).to include('.compact')
@@ -18,9 +18,6 @@ describe 'find_method' do
   end
   it 'returns .flatten when appropriate' do
     expect(find_method(['1d', ['2d', ['3d']]], ['1d','2d', '3d'])).to include('.flatten')
-  end
-  it 'returns .frozen? when appropriate' do
-    expect(find_method([1, 2, 3].freeze, true)).to include('.frozen?')
   end
   it 'returns .inspect, .to_s when appropriate' do
     expect(find_method([1, 2, 3], "[1, 2, 3]")).to include('.inspect', '.to_s')
