@@ -46,33 +46,35 @@ In practice this is:
 
 ```
 As a developer,
-So that I can use this functionality when I'm coding
-I want an extension to my text editor which suggests code for me
+So that I can improve my coding ability,
+I want to learn new array methods.
 
 As a user
 So that I can use the right array method in multiple languages
-I want to be able to input initial and output arrays in eg. Ruby, Javascript, C++,
-Python and Whitespace
+I want to be able to input initial and output arrays in eg. Ruby, Javascript, and Python.
 
 As a user
 So that I can learn about different languages
-I want to be able to hover over methods and see information about the method
+I want to be able to compare different solutions in different languages.
 
 As a user
 So that I can retain my learnings
-I want to have an account and a search history
+I want to have a search history
 
 As a user
 So that I can use the tool for more complex methods
-I want to be able to use arrays which take arguments
+I want to be able to use methods which take arguments
 
 As a user
 So that I can use the tool for more complex methods
-I want to be able to input other objects than arrays (multi-dimensional arrays,
-hashes, strings)
+I want to be able to chain/use multiple methods on an array.
 ```
 ### Test coverage (As of wed-update later)
 To see the full coverage report in your browser run:
+`npm test`
+
+then:
+
 `$ open coverage/lcov-report/index.html`
 
 ![Coverage report](https://imgur.com/zjWEMoc.png)

@@ -44,10 +44,18 @@ describe('input form component', () => {
 
   // note - am still working on this test
 
-  xit('sets the input/output when the submit button is clicked', () => {
-    const mockSetInputOutput = jest.fn();
-    const wrapper = shallow(<InputForm setInputOutput={mockSetInputOutput} />);
-    wrapper.find('button').at(0).simulate('click');
-    expect(mockSetInputOutput).toHaveBeenCalled();
+  describe('sets the input/output when the submit button is clicked', () => {
+    // let wrapper;
+    // beforeEach(() => {
+    //   const mockSetInputOutput = jest.fn();
+    //   wrapper = mount(<InputForm />);
+    //   const javascriptButton = wrapper.find('button').at(0);
+    //   javascriptButton.find('button').at(0).simulate('click');
+    // });
+    // it('sets the input and output', () => {
+    //   const submitButton = wrapper.find('button').at(3)
+    //   submitButton.find('button').at(0).simulate('click');
+    //   expect(wrapper.setInputOutput).toHaveBeenCalled();
+    // });
   });
 });
