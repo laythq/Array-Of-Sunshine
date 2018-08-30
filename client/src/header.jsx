@@ -6,7 +6,7 @@ export class Header extends React.Component {
     return(
       <div id="header">
         <div id="header_title">
-          <p>Hip Hip [Array]</p>
+          <p>HIP HIP [ARRAY]</p>
         </div>
       </div>
     )

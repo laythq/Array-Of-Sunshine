@@ -2,6 +2,7 @@ import React from 'react';
 import { CodeSuggestion } from './suggestion';
 import { InputForm } from './inputform';
 import { History } from './history';
+import css from './summary.css';
 
 export class Summary extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export class Summary extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="summary">
         <div>
           <InputForm
             setInputOutput={this.setInputOutput}
