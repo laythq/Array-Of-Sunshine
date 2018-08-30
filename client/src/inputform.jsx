@@ -2,6 +2,7 @@ import React from 'react';
 import { processInput } from './parser';
 import axios from 'axios';
 import { LanguageSelector } from './languageselector';
+import css from './inputform.css';
 
 export class InputForm extends React.Component {
   constructor(props) {
@@ -88,35 +89,40 @@ export class InputForm extends React.Component {
 
   render() {
 
-    let inputError;
-    let arrayError;
-    let languageError;
-    let outputError;
+    let error;
 
-    if (this.state.inputError) {inputError = <div>Please enter an array/list eg. [1,2,3]</div>}
-    if (this.state.arrayError) {arrayError = <div>Please enter an array/list eg. [1,2,3]</div>}
-    if (this.state.languageError) {languageError = <div>Please select a language</div>}
-    if (this.state.outputError) {outputError = <div>Please enter your desired output</div>}
+    if (this.state.inputError) {error = <div>Please enter an array/list in the correct format eg. [1,2,3]</div>}
+    if (this.state.arrayError) {error = <div>Please enter an array/list eg. [1,2,3]</div>}
+    if (this.state.languageError) {error = <div>Please select a language</div>}
+    if (this.state.outputError) {error = <div>Please enter your desired output</div>}
 
     return (
       <div>
-        <div>
-          {inputError}
-          {arrayError}
-          {languageError}
-          {outputError}
-        </div>
         <div>
           <LanguageSelector
             selectLanguage={this.selectLanguage}
           />
         </div>
-        <div>
-          User Input:
+        <div id="error">
+          {error}
+        </div>
+        <div id="input-form">
           <form onSubmit={this.handleSubmit}>
-            <input id="input" name="input" type="text" onChange={this.handleChange} />
-            <input id="output" name="output" type="text" onChange={this.handleChange} />
-            <input type="submit" value="Submit" />
+            <div id="inputs">
+              <div id="input-section">
+                <div class="instruction">
+                  What you've got:
+                </div>
+                <input id="input" name="input" type="text" class="user-input" onChange={this.handleChange} />
+              </div>
+              <div id="output-section">
+                <div class="instruction">
+                  What you want:
+                </div>
+                <input id="output" name="output" type="text" class="user-input" onChange={this.handleChange} />
+              </div>
+            </div>
+            <input type="submit" class="submit" value="Get Code!" />
           </form>
         </div>
       </div>

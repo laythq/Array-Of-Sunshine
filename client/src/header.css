@@ -2,14 +2,11 @@
   background-color: #253452;
   color: white;
   letter-spacing: 1.5px;
-  margin: 0px;
-  padding: 0px;
   border-bottom: #48B7F8 solid 1px;
 }
 
-
 #header_title {
-  padding: 5px;
-  font-size: 50px;
+  padding: 10px;
+  font-size: 40px;
   font-weight: bold;
 }
