@@ -66,7 +66,7 @@ export class InputForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <input id="input" name="input" type="text" onChange={this.handleChange} />
             <input id="output" name="output" type="text" onChange={this.handleChange} />
-            <input type="submit" value="Submit" />
+            <input id="submit" type="submit" value="Submit" />
           </form>
         </div>
       </div>
