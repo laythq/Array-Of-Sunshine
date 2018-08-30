@@ -38,7 +38,7 @@ given the method which gets me from one to the other
 In practice this is:
 - A web application written in React
 - 10 array methods
-- 1 language - Ruby
+- 1 language - Javascript
 
 ### 🌞 Potential future user stories
 
