@@ -30,7 +30,7 @@ function deepCopy(array) {
 
 function testMethod(inputArray, desiredOutput, method, outputArray, prefix = '') {
   if (compareArrays(deepCopy(inputArray), desiredOutput, method)) {
-    outputArray.push(`${prefix}${method.name}()`);
+    outputArray.push(`.${prefix}${method.name}()`);
   }
   return method.call(deepCopy(inputArray));
 }
@@ -48,14 +48,14 @@ function testMethodsWithZeroArguments(inputArray, desiredOutput, outputArray, pr
   return triedMethods;
 }
 
-function testMethodsWithOneArgument(inputArray, desiredOutput, outputArray, prefix = '') {
+function testMethodsWithOneArgument(inputArray, desiredOutput, outputArray, prefix = '.') {
   const triedMethods = [];
   const args = Suggestor.suggestArguments(inputArray, desiredOutput);
   methodsWithOneArgument.forEach((method) => {
     args.forEach((argument) => {
       if (method === Array.prototype.slice && argument > desiredOutput.length - 1) return;
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
-        outputArray.push(`${prefix}${method.name}(${JSON.stringify(argument)})`);
+        outputArray.push(`.${prefix}${method.name}(${JSON.stringify(argument)})`);
       } else {
         triedMethods.push([method, method.call(deepCopy(inputArray), argument), argument]);
       }
