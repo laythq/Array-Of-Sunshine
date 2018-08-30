@@ -1,0 +1,32 @@
+#language-selector {
+  padding: 20px;
+}
+
+#buttons {
+  border-bottom: white solid 1px;
+  margin: auto;
+  align-content: center;
+  width: 450px;
+}
+
+#language {
+  width: 150px;
+  padding: 10px 0px;
+  margin: auto;
+  font-size: 20px;
+  background-color: #1A253A;
+  color: white;
+  border: none;
+  transition-duration: 0.4s;
+}
+
+#language:hover {
+  color: #48B7F8;
+  font-size: 30px;
+}
+
+#language:focus {
+  color: #48B7F8;
+  font-size: 30px;
+  outline: none;
+}

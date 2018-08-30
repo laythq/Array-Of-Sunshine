@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './languageselector.css';
 
 export function LanguageSelector(props) {
 
@@ -7,16 +8,18 @@ export function LanguageSelector(props) {
   }
 
   return (
-    <div>
-      <button onClick={() => handleClick('javascript')}>
-        Javascript
-      </button>
-      <button onClick={() => handleClick('ruby')}>
-        Ruby
-      </button>
-      <button onClick={() => handleClick('python')}>
-        Python
-      </button>
+    <div id="language-selector">
+      <div id="buttons" align="center">
+        <button id="language" onClick={() => handleClick('javascript')}>
+          Javascript
+        </button>
+        <button id="language" onClick={() => handleClick('ruby')}>
+          Ruby
+        </button>
+        <button id="language" onClick={() => handleClick('python')}>
+          Python
+        </button>
+      </div>
     </div>
   );
 

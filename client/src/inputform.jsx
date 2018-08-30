@@ -107,7 +107,6 @@ export class InputForm extends React.Component {
           {outputError}
         </div>
         <div>
-          Language Selector:
           <LanguageSelector
             selectLanguage={this.selectLanguage}
           />
