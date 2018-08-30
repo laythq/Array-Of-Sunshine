@@ -4,7 +4,7 @@ const argumentSuggestor = require('./argumentSuggestor.js');
 
 function runRuby(input, output, args, rubyRes) {
   exec(`ruby ./server/src/script.rb ${JSON.stringify(input)} ${JSON.stringify(output)}`, function (error, stdout, stderr) {
-    return rubyRes.send(stdout);
+    return rubyRes.send(JSON.parse(stdout));
   });
 }
 
