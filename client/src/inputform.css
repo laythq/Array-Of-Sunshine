@@ -18,8 +18,7 @@
 #inputs {
   margin: 0 auto;
   width: 1012px;
-  border: white solid;
-
+  border: none;
 }
 
 #input-section, #output-section {

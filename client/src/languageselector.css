@@ -9,6 +9,8 @@
 }
 
 #language {
+  font-family: "segoe";
+  letter-spacing: 0.5px;
   width: 150px;
   padding: 10px 0px;
   margin: auto;
