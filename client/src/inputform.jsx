@@ -100,10 +100,12 @@ export class InputForm extends React.Component {
 
     return (
       <div>
-        {inputError}
-        {arrayError}
-        {languageError}
-        {outputError}
+        <div>
+          {inputError}
+          {arrayError}
+          {languageError}
+          {outputError}
+        </div>
         <div>
           Language Selector:
           <LanguageSelector
