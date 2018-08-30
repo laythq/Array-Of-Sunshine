@@ -7,6 +7,9 @@ Locally:
 $ git clone https://github.com/bibicollins/array_of_sunshine.git
 $ cd array_of_sunshine
 $ npm install (requires node to be installed)
+$ npm start
+On a different terminal 
+$ cd client
 $ npm start (web app will open in the browser at localhost:3000)
 ```
 Or:
