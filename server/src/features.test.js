@@ -14,38 +14,38 @@ describe('Features', () => {
   });
   // Adding elements to an array
   it('can add multiple elements at once', () => {
-    expect(findMethod([1,2,3],[1,2,3,4,5,6])).toContain('concat([4,5,6])')
+    expect(findMethod([1,2,3],[1,2,3,4,5,6])).toContain('.concat([4,5,6])')
   });
   // Sum an array
   it('can sum an array', () => {
-    expect(findMethod([10,20,30,40],100)).toContain('reduce((a, b) => a + b)')
+    expect(findMethod([10,20,30,40],100)).toContain('.reduce((a, b) => a + b)')
   });
   // As a string
   it('can convert an array to a string', () => {
-    expect(findMethod([10,20,30,40], '10,20,30,40')).toContain('toString()')
+    expect(findMethod([10,20,30,40], '10,20,30,40')).toContain('.toString()')
   });
   // Merge string array to string with spaces
   it('can recognise an array of words', () => {
-    expect(findMethod(['hack', 'the', 'planet!'], 'hack the planet!')).toContain("join(' ')")
+    expect(findMethod(['hack', 'the', 'planet!'], 'hack the planet!')).toContain(".join(' ')")
   });
 
   // Sort
   it('can sort an array', () => {
-    expect(findMethod([5,4,8,2],[2,4,5,8])).toContain('sort()')
+    expect(findMethod([5,4,8,2],[2,4,5,8])).toContain('.sort()')
   });
   // Reverse
   it('returns .reverse when appropriate', () => {
-    expect(findMethod([1, 2, 3,4], [4, 3, 2, 1])).toContain('reverse()');
+    expect(findMethod([1, 2, 3,4], [4, 3, 2, 1])).toContain('.reverse()');
   });
 
   // Remove null values in an array
   it('returns filter for null values', () => {
-    expect(findMethod(['a',null,,4,null,true],['a',4,true])).toContain('filter(e => e === 0 || e)')
+    expect(findMethod(['a',null,,4,null,true],['a',4,true])).toContain('.filter(e => e === 0 || e)')
   })
   // map lol
   // multiply (divide)
   it('returns map for multiplication', () => {
-    expect(findMethod([1,2,3],[13,26,39])).toContain('map(x => x * 13)')
+    expect(findMethod([1,2,3],[13,26,39])).toContain('.map(x => x * 13)')
   })
   // string => upcase
 })

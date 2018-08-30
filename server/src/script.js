@@ -28,14 +28,14 @@ function deepCopy(array) {
   return JSON.parse(JSON.stringify(array));
 }
 
-function testMethod(inputArray, desiredOutput, method, outputArray, prefix = '') {
+function testMethod(inputArray, desiredOutput, method, outputArray, prefix = '.') {
   if (compareArrays(deepCopy(inputArray), desiredOutput, method)) {
-    outputArray.push(`.${prefix}${method.name}()`);
+    outputArray.push(`${prefix}${method.name}()`);
   }
   return method.call(deepCopy(inputArray));
 }
 
-function testMethodsWithZeroArguments(inputArray, desiredOutput, outputArray, prefix = '') {
+function testMethodsWithZeroArguments(inputArray, desiredOutput, outputArray, prefix = '.') {
   if (!Array.isArray(inputArray)) return {};
   const triedMethods = [];
   methodsWithZeroArguments.forEach((firstMethod) => {
@@ -55,7 +55,7 @@ function testMethodsWithOneArgument(inputArray, desiredOutput, outputArray, pref
     args.forEach((argument) => {
       if (method === Array.prototype.slice && argument > desiredOutput.length - 1) return;
       if (compareArrays((deepCopy(inputArray)), desiredOutput, method, argument)) {
-        outputArray.push(`.${prefix}${method.name}(${JSON.stringify(argument)})`);
+        outputArray.push(`${prefix}${method.name}(${JSON.stringify(argument)})`);
       } else {
         triedMethods.push([method, method.call(deepCopy(inputArray), argument), argument]);
       }
@@ -73,7 +73,7 @@ function lookForChainedMethods(triedMethods, desiredOutput, outputArray) {
     const array = methodAndOutCome[1];
     const arg = methodAndOutCome[2];
     if (!Array.isArray(array)) return;
-    const prefix = `${method.name}(${arg}).`;
+    const prefix = `.${method.name}(${arg}).`;
     testMethodsWithZeroArguments(array, desiredOutput, outputArray, prefix);
     testMethodsWithOneArgument(array, desiredOutput, outputArray, prefix);
     testMapMethods(array, desiredOutput, outputArray, prefix);
@@ -100,21 +100,21 @@ function isANumber(element) {
 function sumAnArray(inputArray, desiredOutput, outputArray) {
   if (inputArray.every(isANumber)) {
     if (deepCopy(inputArray).reduce((a, b) => a + b) === desiredOutput) {
-      outputArray.push('reduce((a, b) => a + b)');
+      outputArray.push('.reduce((a, b) => a + b)');
     }
   }
 }
 
 function joinAnArrayOfWords(inputArray, desiredOutput, outputArray) {
   if (deepCopy(inputArray).join(' ') === desiredOutput) {
-    outputArray.push("join(' ')");
+    outputArray.push(".join(' ')");
   }
 }
 
 function filterOutNullValues(inputArray, desiredOutput,outputArray) {
   const arrayWithoutNullValues = deepCopy(inputArray).filter(e => e === 0 || e);
   if (JSON.stringify(arrayWithoutNullValues) === JSON.stringify(desiredOutput)) {
-    outputArray.push('filter(e => e === 0 || e)');
+    outputArray.push('.filter(e => e === 0 || e)');
     return [Array.prototype.filter, arrayWithoutNullValues, 'e => e === 0 || e'];
   }
   return [];
@@ -126,7 +126,7 @@ function areBothArraysOfNumbers(inputArray, desiredOutput) {
       && desiredOutput.every(isANumber);
 }
 
-function testMapMethods(inputArray, desiredOutput, successfulMethods, prefix = '') {
+function testMapMethods(inputArray, desiredOutput, successfulMethods, prefix = '.') {
   if (areBothArraysOfNumbers(inputArray, desiredOutput)) {
     const multiple = desiredOutput[0] / inputArray[0];
     if (JSON.stringify(inputArray.map(x => x * multiple)) === JSON.stringify(desiredOutput)) {

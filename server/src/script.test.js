@@ -75,7 +75,7 @@ describe('findMethod', () => {
     });
 
     it('returns unshift when appropriate', () => {
-      expect(findMethod([1,2,3,4],[true,1,2,3,4])).toContaincd ('.unshift(true)');
+      expect(findMethod([1,2,3,4],[true,1,2,3,4])).toContain ('.unshift(true)');
     })
   })
 });
