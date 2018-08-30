@@ -10,3 +10,7 @@
   font-size: 40px;
   font-weight: bold;
 }
+
+#header p {
+  margin: 0;
+}

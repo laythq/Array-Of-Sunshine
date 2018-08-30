@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './history.css';
 
 export function History(props) {
 
@@ -9,6 +10,8 @@ export function History(props) {
   const list = generateHistory();
 
   return (
-    <div>{list}</div>
+    <div class="history">
+      {list}
+    </div>
   );
 }
