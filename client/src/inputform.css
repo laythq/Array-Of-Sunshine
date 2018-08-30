@@ -48,8 +48,9 @@
 
 .submit {
   border: none;
-  width: 200px;
+  width: 140px;
   background-color: #F8C248;
   font-size: 20px;
+  padding: 5px 0;
   outline: none;
 }

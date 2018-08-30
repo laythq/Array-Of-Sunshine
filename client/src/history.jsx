@@ -3,15 +3,24 @@ import css from './history.css';
 
 export function History(props) {
 
-  function generateHistory() {
-    return props.history.reverse();
+  if (props.history.length === 0) {
+    return null;
   }
-
-  const list = generateHistory();
+  //
+  // function generateHistory() {
+  //   return props.history.reverse();
+  // }
+  //
+  // const list = generateHistory();
 
   return (
-    <div class="history">
-      {list}
+    <div>
+      <div id="title">
+        History
+        <div className="history">
+          {props.history.reverse()}
+        </div>
+      </div>
     </div>
   );
 }

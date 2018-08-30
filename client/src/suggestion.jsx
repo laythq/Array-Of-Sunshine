@@ -9,7 +9,9 @@ export function CodeSuggestion(props) {
 
     return (
       <div>
-      Methods:
+        <div id="title">
+          Methods
+        </div>
         <div id="code-suggestion">
           <div id="chosen-language">
             {props.language}

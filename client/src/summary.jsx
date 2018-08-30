@@ -78,7 +78,6 @@ export class Summary extends React.Component {
           />
         </div>
         <div>
-            History:
           <History
             history={this.state.history}
           />

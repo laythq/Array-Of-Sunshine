@@ -50,3 +50,9 @@
   border: 0.5px white solid;
   vertical-align: middle;
 }
+
+#title {
+  margin: 10px 0;
+  color: #F8C248;
+  font-size: 18px;
+}
