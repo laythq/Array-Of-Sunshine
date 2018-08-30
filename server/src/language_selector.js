@@ -3,7 +3,7 @@ const findMethod = require('./script.js').findMethod;
 const argumentSuggestor = require('./argumentSuggestor.js');
 
 function runRuby(input, output, args, rubyRes) {
-  exec(`ruby ./server/src/script.rb ${JSON.stringify(input)} ${JSON.stringify(output)}`, function (error, stdout, stderr) {
+  exec(`ruby ./server/src/script.rb ${JSON.stringify(input)} ${JSON.stringify(output)} ${JSON.stringify(args)}`, function (error, stdout, stderr) {
     return rubyRes.send(JSON.parse(stdout));
   });
 }
