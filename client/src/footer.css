@@ -1,0 +1,15 @@
+#footer {
+  background-color: #253452;
+  height: 80px;
+  letter-spacing: 1px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#footer_content {
+  text-align: right;
+  padding: 20px 0;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}

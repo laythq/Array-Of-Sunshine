@@ -1,0 +1,14 @@
+#header {
+  background-color: #253452;
+  color: white;
+  letter-spacing: 1.5px;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+#header_title {
+  padding: 5px;
+  font-size: 50px;
+  font-weight: bold;
+}
