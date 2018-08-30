@@ -45,8 +45,12 @@ export class Summary extends React.Component {
       <div id="logged-suggestion">
         <div id="chosen-language">{language}</div>
         <div id="previous-input">{input}</div>
+        <div id="arrow">></div>
         <div id="previous-output">{output}</div>
+        <div id="second-line">
+        <div id="arrow">=></div>
         {code}
+        </div>
       </div>
     );
   }
