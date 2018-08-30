@@ -51,7 +51,7 @@ def compare_arrays(array1, array2, method, tried_arrays, argument = nil)
   return true if result == array2 || array1 == array2
   tried_arrays << [method, result, argument]
   false
-rescue ArgumentError, TypeError, IndexError
+rescue StandardError, IndexError, ArgumentError, TypeError
   false
 end
 
