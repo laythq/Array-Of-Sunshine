@@ -6,7 +6,7 @@
 #error {
   text-align: center;
   font-size: 17px;
-  color: white;
+  color: #EF4848;
   transition-duration: 0.4s;
   margin-bottom: 10px;
 }
@@ -40,7 +40,6 @@
   height: 75px;
   width: 400px;
   background-color: #4C4E4E;
-  word-wrap: break-word;
 }
 
 .user-input:focus {
@@ -52,4 +51,5 @@
   width: 200px;
   background-color: #F8C248;
   font-size: 20px;
+  outline: none;
 }

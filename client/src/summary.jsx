@@ -56,7 +56,6 @@ export class Summary extends React.Component {
           />
         </div>
         <div>
-            Code Suggestion:
           <CodeSuggestion
             input={this.state.input}
             output={this.state.output}

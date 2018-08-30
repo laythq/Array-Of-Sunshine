@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './suggestion.css';
 
 export function CodeSuggestion(props) {
 
@@ -6,27 +7,28 @@ export function CodeSuggestion(props) {
       return null;
     }
 
-
-
     function formatSuggestion(array) {
       let suggestions = []
-      if(Array.isArray(array)){ array.forEach( suggestion => suggestions.push(<div class="suggestion">{suggestion}</div> ))}
+      if(Array.isArray(array)){ array.forEach( suggestion => suggestions.push(<div id="suggestion">{suggestion}</div> ))}
       return suggestions
     }
 
     return (
-      <div id="code-suggestion">
-        <div id="language">
-          {props.language}
-        </div>
-        <div id="input">
-          {props.input}
-        </div>
-        <div id="output">
-          {props.output}
-        </div>
-        <div id="suggestions">
-          {formatSuggestion(props.suggestion)}
+      <div>
+      Methods:
+        <div id="code-suggestion">
+          <div id="chosen-language">
+            {props.language}
+          </div>
+          <div id="previous-input">
+            {props.input}
+          </div>
+          <div id="previous-output">
+            {props.output}
+          </div>
+          <div id="suggestions">
+            {formatSuggestion(props.suggestion)}
+          </div>
         </div>
       </div>
     );
