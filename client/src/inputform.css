@@ -46,11 +46,16 @@
   outline: none;
 }
 
-.submit {
+.button-holder {
+  text-align: center;
+}
+
+.get-code {
   border: none;
-  width: 140px;
   background-color: #F8C248;
   font-size: 20px;
-  padding: 5px 0;
+  font-weight: bold;
+  padding: 5px 30px;
+  margin-top: 15px;
   outline: none;
 }

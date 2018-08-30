@@ -111,19 +111,21 @@ export class InputForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div id="inputs">
               <div id="input-section">
-                <div class="instruction">
-                  What you've got:
+                <div className="instruction">
+                  What you've got
                 </div>
-                <input id="input" name="input" type="text" class="user-input" onChange={this.handleChange} />
+                <input id="input" name="input" type="text" className="user-input" onChange={this.handleChange} />
               </div>
               <div id="output-section">
-                <div class="instruction">
-                  What you want:
+                <div className="instruction">
+                  What you want
                 </div>
-                <input id="output" name="output" type="text" class="user-input" onChange={this.handleChange} />
+                <input id="output" name="output" type="text" className="user-input" onChange={this.handleChange} />
               </div>
             </div>
-            <input type="submit" class="submit" value="Get Code!" />
+            <div className="button-holder">
+              <input type="submit" className="get-code" value="Generate Code!" />
+            </div>
           </form>
         </div>
       </div>

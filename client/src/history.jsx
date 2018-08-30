@@ -14,12 +14,10 @@ export function History(props) {
   // const list = generateHistory();
 
   return (
-    <div>
+    <div id="history-section">
       <div id="title">
         History
-        <div className="history">
-          {props.history.reverse()}
-        </div>
+        {props.history.reverse()}
       </div>
     </div>
   );

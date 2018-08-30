@@ -8,7 +8,7 @@ export function CodeSuggestion(props) {
     }
 
     return (
-      <div>
+      <div id="suggestion-section">
         <div id="title">
           Methods
         </div>

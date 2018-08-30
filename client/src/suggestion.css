@@ -3,8 +3,15 @@
   src: url(./fonts/SourceCodePro-Semibold.otf)
 }
 
+#suggestion-section {
+  margin: auto;
+  margin-top: 20px;
+  /* border: white 1px solid; */
+  width: 970px;
+  border: solid 1px #F8C248;
+}
+
 #code-suggestion {
-  border: white solid 1px;
   margin: 10px 0px;
 }
 
@@ -45,14 +52,14 @@
   color: #48B7F8;
   background-color: white;
   border-radius: 3px;
-  margin: 5px;
+  margin: 5px 5px;
   padding: 1px 12px;
   border: 0.5px white solid;
   vertical-align: middle;
 }
 
 #title {
-  margin: 10px 0;
+  margin: 10px 5px;
   color: #F8C248;
   font-size: 18px;
 }
