@@ -51,7 +51,7 @@ def compare_arrays(array1, array2, method, tried_arrays, argument = nil)
   return true if result == array2 || array1 == array2
   tried_arrays << [method, result, argument]
   false
-rescue ArgumentError, TypeError
+rescue ArgumentError, TypeError, IndexError
   false
 end
 
@@ -72,7 +72,6 @@ def test_methods_with_one_argument(input, output, solutions, argument_list, trie
       if compare_arrays(dummy_input, output, method, tried_arrays, argument)
         argument = "'#{argument}'" if argument.kind_of?(String)
         solutions << "#{prefix}.#{method}(#{argument})"
-        puts solutions if method == :count && argument == 1
       end
     end
   end
