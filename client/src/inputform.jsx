@@ -16,6 +16,7 @@ export class InputForm extends React.Component {
       inputError: false,
       outputError: false,
       languageError: false,
+      equalsError: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,6 +41,7 @@ export class InputForm extends React.Component {
     else if (!this.isAnArray(processInput(this.state.input))) { this.setError('arrayError') }
     else if (this.state.language === null){ this.setError('languageError') }
     else if (this.state.output === null) { this.setError('outputError') }
+    else if (this.state.input === this.state.output) { this.setError('equalsError') }
     else {
       this.props.setInputOutput(this.state.input, this.state.output);
       this.props.setLanguage(this.state.language);
@@ -64,7 +66,8 @@ export class InputForm extends React.Component {
     this.setState({
       outputError: false,
       languageError: false,
-      arrayError: false
+      arrayError: false,
+      equalsError: false,
     })
   }
 
@@ -96,6 +99,7 @@ export class InputForm extends React.Component {
     if (this.state.arrayError) {error = <div>Please enter an array/list eg. [1,2,3]</div>}
     if (this.state.languageError) {error = <div>Please select a language</div>}
     if (this.state.outputError) {error = <div>Please enter your desired output</div>}
+    if (this.state.equalsError) {error = <div>Please enter 2 different inputs</div>}
 
     return (
       <div>
