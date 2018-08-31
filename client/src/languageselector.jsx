@@ -11,17 +11,6 @@ export class LanguageSelector extends React.Component {
     };
   }
 
-  // setButtons() {
-  //   this.resetButtons()
-  //   if(this.props.language === 'javascript') {
-  //     this.setState( { javascript: 'alive'} )
-  //   } else if(this.props.language === 'ruby') {
-  //     this.setState( { ruby: 'alive'} )
-  //   } else if(this.props.language === 'javascript') {
-  //     this.setState( { python: 'alive'} )
-  //   }
-  // }
-
   resetButtons() {
     this.setState({
       javascript: 'dead',
