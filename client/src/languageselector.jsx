@@ -11,16 +11,16 @@ export class LanguageSelector extends React.Component {
     };
   }
 
-  setButtons() {
-    this.resetButtons()
-    if(this.props.language === 'javascript') {
-      this.setState( { javascript: 'alive'} )
-    } else if(this.props.language === 'ruby') {
-      this.setState( { ruby: 'alive'} )
-    } else if(this.props.language === 'javascript') {
-      this.setState( { python: 'alive'} )
-    }
-  }
+  // setButtons() {
+  //   this.resetButtons()
+  //   if(this.props.language === 'javascript') {
+  //     this.setState( { javascript: 'alive'} )
+  //   } else if(this.props.language === 'ruby') {
+  //     this.setState( { ruby: 'alive'} )
+  //   } else if(this.props.language === 'javascript') {
+  //     this.setState( { python: 'alive'} )
+  //   }
+  // }
 
   resetButtons() {
     this.setState({
@@ -32,7 +32,10 @@ export class LanguageSelector extends React.Component {
 
   handleClick(language) {
     this.props.selectLanguage(language);
-    this.setButtons();
+    this.resetButtons();
+    this.setState({
+      [language]: 'alive',
+    })
   }
 
   render() {
