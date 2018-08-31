@@ -18,9 +18,9 @@ export function History(props) {
   return (
     <div id="history-section">
       <div id="title">
-        Search History
-        {props.history}
+        Your Search History
       </div>
+      {props.history}
     </div>
   );
 }

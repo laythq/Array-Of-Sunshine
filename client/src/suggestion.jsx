@@ -10,7 +10,7 @@ export function CodeSuggestion(props) {
     return (
       <div id="suggestion-section">
         <div id="title">
-          Methods / Functions
+          Your Results
         </div>
         <div id="code-suggestion">
           <div id="chosen-language">

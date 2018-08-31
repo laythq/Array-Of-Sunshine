@@ -42,7 +42,7 @@ export class Summary extends React.Component {
 
   logSuggestion(language, input, output, code) {
     this.state.history.push(
-      <div id="logged-suggestion">
+      <div id="code-suggestion">
         <div id="chosen-language">{language}</div>
         <div id="previous-input">{input}</div>
         <div id="arrow">></div>
