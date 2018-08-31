@@ -9,7 +9,7 @@
   width: 450px;
 }
 
-#language {
+#dead {
   font-family: "segoe";
   letter-spacing: 0.5px;
   width: 150px;
@@ -22,13 +22,20 @@
   transition-duration: 0.4s;
 }
 
-#language:hover {
-  color: #48B7F8;
-  font-size: 30px;
-}
-
-#language:focus {
+#alive {
   color: #48B7F8;
   font-size: 30px;
   outline: none;
 }
+
+
+/* #language:hover {
+  color: #48B7F8;
+  font-size: 30px;
+} */
+
+/* #language:focus {
+  color: #48B7F8;
+  font-size: 30px;
+  outline: none;
+} */
