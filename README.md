@@ -1,4 +1,4 @@
-# 🌞🌞 Array of Sunshine 🌞🌞
+# 🌞🌞 Hip, Hip, Array! 🌞🌞
 
 ## 🌞 How to use
 
