@@ -1,77 +1,35 @@
-# 🌞🌞 Array of Sunshine 🌞🌞
+## Hip, Hip Array
 
-## 🌞 How to use
+Hip, Hip, Array is an educational tool built as part of my final project at Makers Academy. It was built over two weeks together with [Elishka Flint](https://github.com/elishkaflint), [Bibi Collins](https://github.com/bibicollins) and [John Forster](https://github.com/JohnForster).
 
-```
-$ git clone https://github.com/bibicollins/array_of_sunshine.git
-$ cd array_of_sunshine
-$ npm install (requires node to be installed)
-$ npm start (web app will open in the browser at localhost:3000)
-```
+Understanding and manipulating arrays is often difficult for new programmers. Our tool takes your input and desired output, e.g. [1,2,3] --> [3,2,1], and returns the required method needed. It can handle methods in Javascript, Ruby and Python, although Javascript currently has the most methods and functionality.
 
-### 🌞 Our objectives as a team
+![](https://raw.githubusercontent.com/laythq/Array-Of-Sunshine/master/Screenshot%202018-09-10%2009.36.29.png)
 
-**1. Our project has a compelling technical aspect
-2. That said, we do not sacrifice developer processes for technical achievement
-3. We consolidate gaps in our learning from the course (we highlighted JSON API calls, client-side programming eg. React)
-4. We prefer a simple and finished output to a complex and messy/unfinished output
-5. We are all able to explain every aspect of the final product**
+### Approach
 
-### 🌞 Our project
+As a team we were interested in creating a technically compelling tool, but did not want to compromise on process. Using Agile methodologies, our first sprint focussed on delivering an MVP that could handle ten different methods in Javascript, written in React:
 
-**Our aim is to provide a useful tool for beginner developers which provides the code needed to get from an input to an output, and which works for multiple programming languages.**
+![](https://raw.githubusercontent.com/laythq/Array-Of-Sunshine/master/Screenshot%202018-09-10%2009.48.58.png).
 
-In other words:
-- A single-page app, written in React
-- Suggests methods to get from an input to an output, for example:
-    1. User enters [a,b,c] as the input and [c,b,a] as the output
-    2. Program returns `input.reverse` to the user
-- Can  be used for a number of different programming languages
+The remainder of the project was spend adding two more languages (Ruby, Python), adding more sophisticated methods (chained methods, methods with arguments), styling and deployment.
 
-### 🌞 MVP
-```
-As a user
-So that I can use the right array method in Ruby
-I want to be able to input a simple initial array and a simple target array and be
-given the method which gets me from one to the other
-```
-In practice this is:
-- A web application written in React
-- 10 array methods
-- 1 language - Ruby
+### Stack
 
-### 🌞 Potential future user stories
+|Feature|Language|Testing|
+|--------|-------|-------|
+|Front-End|React, hosted on Node/Express|Enzyme|
+|Javascript methods|Javascript|Jest|
+|Ruby methods|Ruby|RSpec|
+|Python methods|Python|Pytest|
 
-```
-As a developer,
-So that I can use this functionality when I'm coding
-I want an extension to my text editor which suggests code for me
 
-As a user
-So that I can use the right array method in multiple languages
-I want to be able to input initial and output arrays in eg. Ruby, Javascript, C++,
-Python and Whitespace
+Our project is deployed to Heroku and can be found [here](https://hip-hip-array.herokuapp.com/)! We used Travis CI for continuous integration.
 
-As a user
-So that I can learn about different languages
-I want to be able to hover over methods and see information about the method
+### Instructions
 
-As a user
-So that I can retain my learnings
-I want to have an account and a search history
+To use locally, please clone this repo and install all dependencies with npm.
 
-As a user
-So that I can use the tool for more complex methods
-I want to be able to use arrays which take arguments
+From the project root, launch the backend server with `npm start`. Once it's up, navigate to the /client directory and launch the front-end server with `npm start`. You should be automatically directed to the page on your default browser.
 
-As a user
-So that I can use the tool for more complex methods
-I want to be able to input other objects than arrays (multi-dimensional arrays,
-hashes, strings)
-```
-### Todo
-1. Stack info
-2. Screenshot of the program in action
-3. What we would have done with more time
-4. Test coverage
-5. ...
+To run our tests, simply run `npm test` from the project root or from the /client directory.
