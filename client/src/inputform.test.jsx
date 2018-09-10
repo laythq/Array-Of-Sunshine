@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { InputForm } from './inputform';
+import Adapter from 'enzyme-adapter-react-16';
+import { configure } from 'enzyme'
+configure({ adapter: new Adapter() });
 
 describe('input form component', () => {
   describe('array inputs and outputs', () => {
