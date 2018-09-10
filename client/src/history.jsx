@@ -1,15 +1,24 @@
 import React from 'react';
+import css from './history.css';
 
 export function History(props) {
 
+  if (props.history.length === 0) {
+    return null;
+  }
+
   function generateHistory() {
-    const items = props.history.map(item => item.slice());
-    return items.reverse().map((item, index) => <div key={index}>{item}</div>);
+    return props.history.reverse().map((item, index) => <div key={index}>{item}</div>);
   }
 
   const list = generateHistory();
 
   return (
-    <div>{list}</div>
+    <div id="history-section">
+      <div id="title">
+        Your Search History
+      </div>
+      {list}
+    </div>
   );
 }

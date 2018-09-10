@@ -1,0 +1,19 @@
+#footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  background-color: #253452;
+  height: 80px;
+  margin: 0px;
+  padding: 0px;
+  border-top: #48B7F8 solid 1px;
+}
+
+#footer_content {
+  text-align: right;
+  padding: 20px 30px;
+  color: white;
+  font-size: 12px;
+  font-weight: none;
+  letter-spacing: 1px;
+}

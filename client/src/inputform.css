@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "source-code-semibold";
+  src: url(./fonts/SourceCodePro-Semibold.otf)
+}
+
+#error {
+  text-align: center;
+  font-size: 17px;
+  color: #EF4848;
+  transition-duration: 0.4s;
+  margin-bottom: 10px;
+}
+
+#input-form {
+  border: none;
+}
+
+#inputs {
+  margin: 0 auto;
+  width: 1012px;
+  border: none;
+}
+
+#input-section, #output-section {
+  display: inline-block;
+  font-size: 20px;
+  color: #F8C248;
+  padding: 20px;
+  margin: 4px 20px;
+  border: #F8C248 solid 1px;
+}
+
+.user-input {
+  font-family: "source-code-semibold";
+  text-align: center;
+  color: #48B7F8;
+  font-size: 30px;
+  margin: 10px 0px;
+  padding: 0px 10px;
+  height: 75px;
+  width: 400px;
+  background-color: #4C4E4E;
+}
+
+.user-input:focus {
+  outline: none;
+}
+
+.button-holder {
+  text-align: center;
+}
+
+.get-code {
+  border: none;
+  background-color: #F8C248;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 30px;
+  margin-top: 15px;
+  outline: none;
+}

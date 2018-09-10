@@ -1,0 +1,42 @@
+#language-selector {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+#buttons {
+  border-bottom: white solid 1px;
+  margin: auto;
+  width: 450px;
+}
+
+#dead {
+  font-family: "segoe";
+  letter-spacing: 0.5px;
+  width: 150px;
+  padding: 10px 0px;
+  margin: auto;
+  font-size: 20px;
+  background-color: #1A253A;
+  color: white;
+  border: none;
+  transition-duration: 0.4s;
+}
+
+#alive {
+  font-family: "segoe";
+  letter-spacing: 0.5px;
+  width: 150px;
+  padding: 10px 0px;
+  margin: auto;
+  font-size: 30px;
+  background-color: #1A253A;
+  color: #48B7F8;
+  border: none;
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+#dead:hover {
+  color: #48B7F8;
+  font-size: 30px;
+}

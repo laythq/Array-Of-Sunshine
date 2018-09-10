@@ -2,6 +2,7 @@ import React from 'react';
 import { CodeSuggestion } from './suggestion';
 import { InputForm } from './inputform';
 import { History } from './history';
+import css from './summary.css';
 
 export class Summary extends React.Component {
   constructor(props) {
@@ -40,22 +41,38 @@ export class Summary extends React.Component {
   }
 
   logSuggestion(language, input, output, code) {
-    this.state.history.push(`${language}: ${input} > ${output} = ${code}`);
+    this.state.history.push(
+      <div id="code-suggestion">
+        <div id="chosen-language">{language}</div>
+        <div id="previous-input">{input}</div>
+        <div id="arrow">></div>
+        <div id="previous-output">{output}</div>
+        <div id="second-line">
+          <div id="suggestions">{code}</div>
+        </div>
+      </div>
+    );
+  }
+
+  formatSuggestion(array) {
+    let suggestions = []
+    if(Array.isArray(array)){ array.forEach( suggestion => suggestions.push(<div id="suggestion">{suggestion}</div> ))}
+    return suggestions
   }
 
   render() {
     return (
-      <div>
+      <div id="summary">
         <div>
           <InputForm
             setInputOutput={this.setInputOutput}
             setSuggestion={this.setSuggestion}
             setLanguage={this.setLanguage}
             logSuggestion={this.logSuggestion}
+            formatSuggestion={this.formatSuggestion}
           />
         </div>
         <div>
-            Code Suggestion:
           <CodeSuggestion
             input={this.state.input}
             output={this.state.output}
@@ -64,7 +81,6 @@ export class Summary extends React.Component {
           />
         </div>
         <div>
-            History:
           <History
             history={this.state.history}
           />
