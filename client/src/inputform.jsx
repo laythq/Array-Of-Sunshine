@@ -2,7 +2,7 @@ import React from 'react';
 import { processInput } from './parser';
 import axios from 'axios';
 import { LanguageSelector } from './languageselector';
-import css from './inputform.css';
+import css from './styles/inputform.css';
 
 export class InputForm extends React.Component {
   constructor(props) {

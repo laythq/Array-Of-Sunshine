@@ -1,7 +1,7 @@
 import mockAxios from 'jest-mock-axios';
 import React from 'react';
 import { shallow } from 'enzyme';
-import { InputForm } from './inputform';
+import { InputForm } from '../inputform';
 
 // note am still working on this test!!
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { CodeSuggestion } from './suggestion';
 import { InputForm } from './inputform';
 import { History } from './history';
-import css from './summary.css';
+import css from './styles/summary.css';
 
 export class Summary extends React.Component {
   constructor(props) {

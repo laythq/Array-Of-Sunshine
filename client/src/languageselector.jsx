@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './languageselector.css';
+import css from './styles/languageselector.css';
 
 export class LanguageSelector extends React.Component {
   constructor(props) {

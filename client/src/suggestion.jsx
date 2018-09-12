@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './suggestion.css';
+import css from './styles/suggestion.css';
 
 export function CodeSuggestion(props) {
 

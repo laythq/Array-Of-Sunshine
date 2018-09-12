@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from './header';
 import { Summary } from './summary';
 import { Footer } from './footer';
-import css from './App.css';
+import css from './styles/App.css';
 
 
 export function App(props) {
